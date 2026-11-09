@@ -201,3 +201,7 @@ div.elementor-heading-title,span.elementor-heading-title,p.elementor-heading-tit
 }
 .pv-balance .elementor-heading-title{text-wrap:balance}
 @media (max-width:767px){.elementor-element.pv-lines.pv-lines--hero{--pv-tile-w:34px}}
+/* Phones: price cards side by side; fee labels may use two balanced lines instead of shrinking */
+@media (max-width:767px){
+  .pv-fee-pill .elementor-heading-title{white-space:normal!important;text-wrap:balance}
+}
