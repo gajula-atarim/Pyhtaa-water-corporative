@@ -32,12 +32,12 @@ p,li{text-wrap:pretty}
 /* ---------- Drifting triple wavy lines (SVG tile = container background image) ---------- */
 /* no !important on background-position: an !important value would override (freeze) the drift animation */
 .elementor-element.pv-lines{--pv-tile-w:61px;background-repeat:repeat-x!important;background-size:var(--pv-tile-w) auto!important;background-position:0 50%;animation:pvDrift 6s linear infinite}
-.pv-lines--hero{--pv-tile-w:76px}
-.pv-lines--md{--pv-tile-w:61px}
-.pv-lines--card{--pv-tile-w:46px}
-.pv-lines--foot{--pv-tile-w:49px}
-.pv-lines--drawer{--pv-tile-w:52px}
-.pv-lines--quick{--pv-tile-w:34px}
+.elementor-element.pv-lines.pv-lines--hero{--pv-tile-w:76px}
+.elementor-element.pv-lines.pv-lines--md{--pv-tile-w:61px}
+.elementor-element.pv-lines.pv-lines--card{--pv-tile-w:46px}
+.elementor-element.pv-lines.pv-lines--foot{--pv-tile-w:49px}
+.elementor-element.pv-lines.pv-lines--drawer{--pv-tile-w:52px}
+.elementor-element.pv-lines.pv-lines--quick{--pv-tile-w:34px}
 
 /* ---------- Photo cards: hairline inner border on top of the overlay ---------- */
 .pv-photo::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
@@ -200,4 +200,4 @@ div.elementor-heading-title,span.elementor-heading-title,p.elementor-heading-tit
   .pv-copyright .hfe-copyright-wrapper,.pv-copyright .hfe-copyright-wrapper a{font-size:13px}
 }
 .pv-balance .elementor-heading-title{text-wrap:balance}
-@media (max-width:767px){.pv-lines--hero{--pv-tile-w:34px}}
+@media (max-width:767px){.elementor-element.pv-lines.pv-lines--hero{--pv-tile-w:34px}}
