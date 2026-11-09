@@ -32,3 +32,17 @@ add_filter( 'upload_mimes', function ( $mimes ) {
 	}
 	return $mimes;
 } );
+
+/**
+ * Finnish wording for the few Ultimate Addons for Elementor (header-footer-elementor)
+ * front-end strings that have no Finnish translation pack.
+ */
+add_filter( 'gettext_header-footer-elementor', function ( $translation, $text ) {
+	$fi = array(
+		'Skip to main content' => 'Siirry pääsisältöön',
+		'Menu'                 => 'Valikko',
+		'Menu Toggle'          => 'Avaa valikko',
+		'Close'                => 'Sulje',
+	);
+	return isset( $fi[ $text ] ) ? $fi[ $text ] : $translation;
+}, 10, 2 );
