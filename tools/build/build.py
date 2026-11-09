@@ -74,7 +74,7 @@ def hero():
     _t(tap, width=unit('46%'), min_height=unit('50%'))
     right = COL2(420, blob_, lake, tap, minh='clamp(380px,46vw,540px)',
                  extra={'min_height_mobile': unit(250), '_flex_order_mobile': 'start',
-                        'min_height_tablet': unit(340), '_flex_order_tablet': 'start', 'width_tablet': unit('100%')})
+                        'min_height_tablet': unit('clamp(320px,42vw,420px)'), '_flex_order_tablet': 'start', 'width_tablet': unit('100%')})
     return con(con(left, right, d='row', wrap=True, gap_=48, align='center',
                    extra={'flex_gap_mobile': gap(20), 'flex_gap_tablet': gap(28)}),
                boxed=1136, pad=('clamp(40px,6vw,80px)', 32, 'clamp(48px,6vw,80px)', 32), tag='section', isinner=False,
