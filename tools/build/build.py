@@ -193,7 +193,8 @@ def price_card(dark):
         _m(b, width=sz(120), min_height=sz(120), _offset_x_end=sz(-36), _offset_y=sz(-36))
         tag = pill('Avoid the €5 additional fee', '#14202B', '#F2B53A', ls=0.02, pad=(6, 10),
                    size='min(11px, calc((100cqw - 20px) / 16.2))', cls='pv-nowrap pv-fee-pill')
-        _m(tag, typography_font_size=sz(10.5), _padding=dims(6, 10))
+        # phones: size follows the card width (cqw), never overflows the pill
+        _m(tag, typography_font_size=unit('clamp(9px, calc((100cqw - 20px) / 17), 10.5px)'), _padding=dims(6, 10))
         return _m(con(
             b, tag,
             _m(heading('E-invoice', 16, 500, 1.5, col='#A9D1EA', tag='span', margin=(12, 0, 0, 0)),

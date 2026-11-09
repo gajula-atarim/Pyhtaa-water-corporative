@@ -208,7 +208,8 @@ div.elementor-heading-title,span.elementor-heading-title,p.elementor-heading-tit
     -webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:28px!important;margin-bottom:-28px}
   .elementor-element.pv-price-track::-webkit-scrollbar{display:none}
   .pv-price-track>.e-con{flex:0 0 78%!important;scroll-snap-align:start;scroll-snap-stop:always}
-  .pv-price-track .pv-fee-pill .elementor-heading-title{white-space:nowrap}
+  .pv-price-track .pv-fee-pill{max-width:100%}
+  .pv-price-track .pv-fee-pill .elementor-heading-title{white-space:normal!important;text-wrap:balance}
   .pv-price-dots{display:flex;flex:0 0 100%;justify-content:center;gap:6px;margin-top:14px}
   .pv-price-dots button{width:7px;height:7px;padding:0;border:0;border-radius:9px;background:#C9D6E0;cursor:pointer;transition:width .3s ease,background .3s ease}
   .pv-price-dots button.is-active{width:20px;background:#1F5F99}
