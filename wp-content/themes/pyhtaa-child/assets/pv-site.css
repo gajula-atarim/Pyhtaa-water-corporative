@@ -157,5 +157,8 @@ body.home .hfe-nav-menu li.pv-hide-on-home{display:none!important}
 /* Drawer fits the window height: item spacing scales with height (15px on tall screens),
    decorative lines step aside below ~1020px tall and card descriptions below ~860px. */
 .pv-drawer ul.hfe-nav-menu li a.hfe-menu-item{padding-top:clamp(4px,1.45vh,15px)!important;padding-bottom:clamp(4px,1.45vh,15px)!important}
-@media (max-height:1019px){.pv-drawer .pv-drawer-lines{display:none!important}}
+/* Spacer between menu and contacts: grows into free space, collapses (hiding the lines) when there is none */
+.pv-drawer .pv-drawer-spacer{min-height:0!important;flex-basis:0;container-type:size}
+@container (max-height:41px){.pv-drawer-spacer .pv-drawer-lines{visibility:hidden}}
+.pv-drawer .pv-drawer-spacer .pv-drawer-lines{flex:none}
 @media (max-height:859px){.pv-drawer .pv-drawer-desc{display:none!important}}

@@ -336,10 +336,13 @@ def header():
                          '041 329 8271', TEL_PM, '#F2B53A', '#14202B', '#14202B', '#FFFFFF'),
                    dcard('Billing, Change of Address and Other Enquiries/Notifications', 'Secretary: Mona Sissi',
                          '050 330 8896', TEL_SEC, 'rgba(255,255,255,.12)', '#FFFFFF', '#D6E8F4', 'rgba(255,255,255,.22)'),
-                   lines('yellow', 6, 200, 34, 'drawer', margin=(8, 0, 0, 0), opacity=.7, cls='pv-drawer-lines'),
-                   gap_=10, margin=('auto', 0, 0, 0))
+                   gap_=10)
+    # flexible spacer between the menu and the contact cards; the wavy lines sit in the middle of the free space
+    waves = con(lines('yellow', 6, 200, 34, 'drawer', opacity=.7, cls='pv-drawer-lines'),
+                justify='center', align='flex-start', minh=0, overflow='hidden', cls='pv-drawer-spacer',
+                extra={'_flex_size': 'custom', '_flex_grow': 1, '_flex_shrink': 1})
     drawer = con(con(dlogo, close, d='row', justify='space-between', align='center', gap_=12),
-                 nav_menu, contacts,
+                 nav_menu, waves, contacts,
                  bg='#1F5F99', radius=(28, 0, 0, 28),
                  pad=('clamp(12px,2vh,20px)', 'clamp(20px,4vw,32px)', 'clamp(12px,2.8vh,28px)', 'clamp(20px,4vw,32px)'),
                  gap_='clamp(8px,2.8vh,28px)', cls='pv-drawer', tag='aside', extra=shadow(-20, 0, 60, 0, 'rgba(11,46,79,.35)'))
