@@ -26,7 +26,7 @@
     btn.setAttribute('aria-expanded', 'false');
   });
   var drawer = doc.querySelector('.pv-drawer');
-  if (drawer) { drawer.setAttribute('aria-label', 'Main menu'); drawer.setAttribute('aria-hidden', 'true'); }
+  if (drawer) { drawer.setAttribute('aria-label', 'Päävalikko'); drawer.setAttribute('aria-hidden', 'true'); }
   function setMenu(open) {
     body.classList.toggle('pv-menu-open', open);
     body.style.overflow = open ? 'hidden' : '';
@@ -34,7 +34,7 @@
     toggles.forEach(function (btn) {
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       var t = btn.querySelector('.elementor-button-text');
-      if (t) { if (!t.dataset.pvLabel) t.dataset.pvLabel = t.textContent; t.textContent = open ? 'Close' : t.dataset.pvLabel; }
+      if (t) { if (!t.dataset.pvLabel) t.dataset.pvLabel = t.textContent; t.textContent = open ? 'Sulje' : t.dataset.pvLabel; }
     });
     // staggered menu items: .15s + i*.05s when opening
     $$('.pv-drawer ul.hfe-nav-menu > li').forEach(function (li, i) {
@@ -76,11 +76,11 @@
     if (cards.length < 2) return;
     var dots = doc.createElement('div');
     dots.className = 'pv-price-dots';
-    dots.setAttribute('aria-label', 'Price cards');
+    dots.setAttribute('aria-label', 'Hintakortit');
     cards.forEach(function (c, i) {
       var d = doc.createElement('button');
       d.type = 'button';
-      d.setAttribute('aria-label', 'Show card ' + (i + 1));
+      d.setAttribute('aria-label', 'Näytä kortti ' + (i + 1));
       d.addEventListener('click', function () { go(i); hold(); });
       dots.appendChild(d);
     });

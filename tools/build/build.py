@@ -41,9 +41,9 @@ COL2 = lambda basis, *kids, **kw: con(*kids, width=basis, grow=1, **kw)  # auto-
 def hero():
     # Phones use layout "A": short photo collage first, then compact text and the two actions side by side.
     # All phone values are Elementor _mobile settings (incl. mobile order), desktop/tablet are unchanged.
-    bid = heading('Business ID: Y 2605405-8', 14, 400, 1.5, col='#4A5966', tag='span')
-    h1 = heading('Pyhtää Water Cooperative', 'clamp(40px,5.6vw,68px)', 600, 1.05, -0.02, '#0B2E4F', tag='h1')
-    sub = heading('Home page of Pyhtää Water Cooperative', 19, 400, 1.5, col='#3A4854', tag='p', cls='pv-balance')
+    bid = heading('Y-tunnus: 2605405-8', 14, 400, 1.5, col='#4A5966', tag='span')
+    h1 = heading('Pyhtään vesiosuuskunta', 'clamp(40px,5.6vw,68px)', 600, 1.05, -0.02, '#0B2E4F', tag='h1')
+    sub = heading('Pyhtään vesiosuuskunnan kotisivu', 19, 400, 1.5, col='#3A4854', tag='p', cls='pv-balance')
     bid['settings']['typography_font_size_mobile'] = unit(12)
     h1['settings']['typography_font_size_mobile'] = unit(34)
     sub['settings']['typography_font_size_mobile'] = unit(15)
@@ -56,8 +56,8 @@ def hero():
     _t(waves, width=unit(260), min_height=unit(30), margin=dims(6, 0, 0, 0))
     left = COL2(420,
         bid, h1, sub,
-        con(button('Water quality results', url('Water quality results'), fg='#14202B', bg='#F2B53A', hfg='#FFFFFF', hbg='#0B2E4F', pad=(14, 26)),
-            button('Price list', url('Price list'), fg='#0B2E4F', hfg='#0B2E4F', pad=(14, 8), cls='pv-link-btn'),
+        con(button('Vedenlaatutulokset', url('Water quality results'), fg='#14202B', bg='#F2B53A', hfg='#FFFFFF', hbg='#0B2E4F', pad=(14, 26)),
+            button('Hinnasto', url('Price list'), fg='#0B2E4F', hfg='#0B2E4F', pad=(14, 8), cls='pv-link-btn'),
             d='row', gap_=12, wrap=True, extra={'flex_gap_mobile': gap(6), 'flex_align_items_mobile': 'center'}),
         waves,
         gap_=22, extra={'flex_gap_mobile': gap(12), 'flex_gap_tablet': gap(16), 'width_tablet': unit('100%')})
@@ -86,15 +86,15 @@ def hero():
 def statement():
     return con(
         image('pv-sun-drop', 180, align='center'),
-        heading('Water Testing Results Are Available', 'clamp(28px,3.6vw,40px)', 600, 1.25, -0.015, '#14202B', align='center'),
-        text(f'<p>The water testing results have arrived and can be found <a href="{url("Water quality results")}" style="font-weight:600">here</a>.</p>', 17, 1.6, '#3A4854', align='center'),
-        button('Water quality results', url('Water quality results'), ls=0.06, pad=(16, 36), radius=2, align='center', cls='pv-lift', **SKY_BTN),
+        heading('Vesinäytteiden tulokset ovat valmistuneet', 'clamp(28px,3.6vw,40px)', 600, 1.25, -0.015, '#14202B', align='center'),
+        text(f'<p>Vesinäytteiden tulokset ovat saapuneet, ja ne löytyvät <a href="{url("Water quality results")}" style="font-weight:600">täältä</a>.</p>', 17, 1.6, '#3A4854', align='center'),
+        button('Vedenlaatutulokset', url('Water quality results'), ls=0.06, pad=(16, 36), radius=2, align='center', cls='pv-lift', **SKY_BTN),
         boxed=836, gap_=24, align='center', tag='section', cls='pv-reveal', isinner=False,
         pad=('clamp(40px,6vw,72px)', 32, 'clamp(64px,8vw,104px)', 32))
 
 
-QUICK = [('Water quality results', 'pv-icon-drop'), ('Price list', 'pv-icon-euro'),
-         ('Meter readings', 'pv-icon-meter'), ('Contact', 'pv-icon-phone')]
+QUICK = [('Vedenlaatutulokset', 'pv-icon-drop'), ('Hinnasto', 'pv-icon-euro'),
+         ('Mittarilukemat', 'pv-icon-meter'), ('Yhteystiedot', 'pv-icon-phone')]
 
 
 def quick_card(title, ic):
@@ -114,15 +114,15 @@ def notice_band():
         photo('water-meter', 28, {'pos': {'left': 0, 'top': 0}, 'w': '94%', 'h': '100%'}),
         minh=340)
     copy = COL2(360,
-        con(heading('Announcement', 12, 600, 1.5, 0.08, '#FFFFFF', tag='span', transform='uppercase',
+        con(heading('Tiedote', 12, 600, 1.5, 0.08, '#FFFFFF', tag='span', transform='uppercase',
                     bg='#14202B', radius=999, pad=(6, 12), width='auto'),
-            heading('August 14, 2026', 14, 500, 1.5, col='#14202B', tag='span', width='auto'),
+            heading('14.8.2026', 14, 500, 1.5, col='#14202B', tag='span', width='auto'),
             d='row', gap_=12, align='center', wrap=True),
-        heading('Due to increased costs, the Board of Directors decided at its meeting on August 12, 2026, to increase prices!',
+        heading('Hallitus päätti kokouksessaan 12.8.2026 korottaa hintoja kustannusten nousun vuoksi!',
                 'clamp(24px,2.8vw,32px)', 600, 1.25, -0.01, '#14202B', cls='pv-pretty'),
-        text('<p>The updated price list can be found on the dedicated tab.</p>', 16, 1.6, '#14202B'),
-        text('<p>An SMS notification will also be sent to all shareholders whose contact details are available with the secretary.</p>', 16, 1.6, '#14202B'),
-        button('Updated price list', url('Price list'), size=14, fg='#FFFFFF', bg='#14202B', hfg='#FFFFFF', hbg='#0B2E4F', pad=(14, 24)),
+        text('<p>Päivitetty hinnasto löytyy omalta välilehdeltään.</p>', 16, 1.6, '#14202B'),
+        text('<p>Tiedote lähetetään myös tekstiviestinä kaikille osakkaille, joiden yhteystiedot ovat sihteerin tiedossa.</p>', 16, 1.6, '#14202B'),
+        button('Päivitetty hinnasto', url('Price list'), size=14, fg='#FFFFFF', bg='#14202B', hfg='#FFFFFF', hbg='#0B2E4F', pad=(14, 24)),
         gap_=18)
     quick = con(*[quick_card(t, i) for t, i in QUICK], d='row', wrap=True, gap_=16,
                 pad=('clamp(8px,2vw,16px)', 0, 0, 0), cls='pv-quick-group pv-stagger')
@@ -143,11 +143,11 @@ def step(n, t):
 
 def meter_readings():
     left = COL2(420,
-        heading('Meter Readings and Contact Information', 'clamp(28px,3.4vw,40px)', 600, 1.15, -0.015, '#0B2E4F'),
-        con(step('1', 'Please submit your water meter readings to the secretary in June.'),
-            step('2', 'Readings from remote-reading meters do not need to be submitted manually.'),
-            step('3', 'Please refer to the pictures under the Meter Readings tab for instructions.'), gap_=14),
-        button('Meter readings', url('Meter readings'), size=14, pad=(14, 24), **SKY_BTN),
+        heading('Mittarilukemat ja yhteystiedot', 'clamp(28px,3.4vw,40px)', 600, 1.15, -0.015, '#0B2E4F'),
+        con(step('1', 'Ilmoitathan vesimittarin lukeman sihteerille kesäkuussa.'),
+            step('2', 'Etäluettavien mittareiden lukemia ei tarvitse ilmoittaa erikseen.'),
+            step('3', 'Ohjeet löydät Mittarilukemat-välilehden kuvista.'), gap_=14),
+        button('Mittarilukemat', url('Meter readings'), size=14, pad=(14, 24), **SKY_BTN),
         lines('blue', 6, 'min(100%,300px)', 40, 'md'),
         gap_=22)
     right = COL2(420,
@@ -165,15 +165,15 @@ def article(title, body):
 
 def announcements():
     left = COL2(420,
-        article('The Water Cooperative Is Switching to E-Invoicing',
-                '<p>Please remember to subscribe to e-invoices! By doing so, you can avoid the €5 additional fee charged for paper invoices. Instructions for subscribing to e-invoices can be found on the reverse side of your previous invoice. If you would like to receive invoices by post (with an additional €5 fee), please contact the secretary.</p>'),
-        article('The Cooperative Has Replaced Mechanical Water Meters with Remote-Reading Meters',
-                '<p>A few shareholders could not be reached, so their meters will be replaced at a later date. Meters were replaced where they were located in heated spaces to avoid any risk of freezing.</p>'),
-        article('Information About the New Property Manager',
-                f'<p>Please be informed that the Water Cooperative has appointed a new property manager. Matti Härkänen, phone: <a href="{TEL_PM}" style="color:#ffffff;font-weight:600">041 329 8271</a>.</p>'),
+        article('Vesiosuuskunta siirtyy e-laskutukseen',
+                '<p>Muistathan tilata e-laskun! Näin vältät paperilaskusta perittävän 5 €:n lisämaksun. Ohjeet e-laskun tilaamiseen löytyvät edellisen laskun kääntöpuolelta. Jos haluat laskut jatkossakin postitse (lisämaksu 5 €), ota yhteyttä sihteeriin.</p>'),
+        article('Osuuskunta on vaihtanut mekaaniset vesimittarit etäluettaviin',
+                '<p>Muutamaa osakasta ei tavoitettu, joten heidän mittarinsa vaihdetaan myöhemmin. Mittarit vaihdettiin kohteissa, joissa ne sijaitsevat lämpimissä tiloissa, jotta jäätymisvaaraa ei ole.</p>'),
+        article('Tietoa uudesta kiinteistönhoitajasta',
+                f'<p>Vesiosuuskunnalle on nimitetty uusi kiinteistönhoitaja: Matti Härkänen, puh. <a href="{TEL_PM}" style="color:#ffffff;font-weight:600">041 329 8271</a>.</p>'),
         gap_=32)
-    badge = con(heading('€2', 30, 600, 1, col='#0B2E4F', tag='span', align='center'),
-                heading('per e-invoice', 12, 500, 1.3, col='#0B2E4F', tag='span', align='center', margin=(4, 0, 0, 0)),
+    badge = con(heading('2 €', 30, 600, 1, col='#0B2E4F', tag='span', align='center'),
+                heading('per e-lasku', 12, 500, 1.3, col='#0B2E4F', tag='span', align='center', margin=(4, 0, 0, 0)),
                 abs_={'right': 0, 'bottom': -24}, width=132, minh=132, bg='#5FA8D3', radius=999, justify='center',
                 align='center', z=2,
                 extra={'border_border': 'solid', 'border_width': dims(4), 'border_color': '#FFFFFF',
@@ -208,28 +208,28 @@ def price_card(dark):
     if dark:
         b = blob('#1F5F99', 12, -2, {'pos': {'right': -36, 'top': -36}, 'w': 150, 'h': 150})
         _m(b, width=sz(120), min_height=sz(120), _offset_x_end=sz(-36), _offset_y=sz(-36))
-        tag = pill('Avoid the €5 additional fee', '#14202B', '#F2B53A', ls=0.02, pad=(6, 10),
+        tag = pill('Vältä 5 €:n lisämaksu', '#14202B', '#F2B53A', ls=0.02, pad=(6, 10),
                    size='min(11px, calc((100cqw - 20px) / 16.2))', cls='pv-nowrap pv-fee-pill')
         # phones: size follows the card width (cqw), never overflows the pill
         _m(tag, typography_font_size=unit('clamp(9px, calc((100cqw - 20px) / 17), 10.5px)'), _padding=dims(6, 10))
         return _m(con(
             b, tag,
-            _m(heading('E-invoice', 16, 500, 1.5, col='#A9D1EA', tag='span', margin=(12, 0, 0, 0)),
+            _m(heading('E-lasku', 16, 500, 1.5, col='#A9D1EA', tag='span', margin=(12, 0, 0, 0)),
                typography_font_size=sz(15), _margin=dims(8, 0, 0, 0)),
-            _m(heading('€2', 'clamp(56px,6vw,76px)', 600, 1, -0.03, '#FFFFFF', tag='span'), typography_font_size=sz(58)),
-            _m(heading('per e-invoice', 14, 400, 1.5, col='#D6E8F4', tag='span'), typography_font_size=sz(13)),
+            _m(heading('2 €', 'clamp(56px,6vw,76px)', 600, 1, -0.03, '#FFFFFF', tag='span'), typography_font_size=sz(58)),
+            _m(heading('per e-lasku', 14, 400, 1.5, col='#D6E8F4', tag='span'), typography_font_size=sz(13)),
             width=220, grow=1, bg='#0B2E4F', radius=32, pad=(32, 28), gap_=14, overflow='hidden', cls='pv-fee-card',
             extra=shadow(0, 28, 56, -20, 'rgba(11,46,79,.6)')), **card_m)
-    tag = pill('€5 additional fee', '#4A5966', '#E8F1F7', ls=0.06, cls='pv-fee-pill')
+    tag = pill('5 €:n lisämaksu', '#4A5966', '#E8F1F7', ls=0.06, cls='pv-fee-pill')
     _m(tag, typography_font_size=sz(10.5), typography_letter_spacing={'unit': 'em', 'size': 0.04, 'sizes': []},
        _padding=dims(6, 10))
     return _m(con(
         tag,
-        _m(heading('Paper invoice by post', 16, 500, 1.5, col='#4A5966', tag='span', margin=(12, 0, 0, 0)),
+        _m(heading('Paperilasku postitse', 16, 500, 1.5, col='#4A5966', tag='span', margin=(12, 0, 0, 0)),
            typography_font_size=sz(15), typography_line_height={'unit': 'em', 'size': 1.4, 'sizes': []},
            _margin=dims(8, 0, 0, 0)),
-        _m(heading('€5', 'clamp(56px,6vw,76px)', 600, 1, -0.03, '#4A5966', tag='span'), typography_font_size=sz(58)),
-        _m(heading('per paper invoice. If you would like to receive invoices by post, please contact the secretary.', 14, 400, 1.5, col='#4A5966', tag='span'),
+        _m(heading('5 €', 'clamp(56px,6vw,76px)', 600, 1, -0.03, '#4A5966', tag='span'), typography_font_size=sz(58)),
+        _m(heading('per paperilasku. Jos haluat laskut postitse, ota yhteyttä sihteeriin.', 14, 400, 1.5, col='#4A5966', tag='span'),
            typography_font_size=sz(13), typography_line_height={'unit': 'em', 'size': 1.5, 'sizes': []}),
         width=220, grow=1, bg='#FFFFFF', radius=32, pad=(32, 28), gap_=14,
         extra={'border_border': 'dashed', 'border_width': dims(2), 'border_color': '#C9D6E0'}), **card_m)
@@ -244,12 +244,12 @@ def fact(title, body):
 
 def billing():
     left = COL2(440,
-        heading('Billing', 13, 600, 1.5, 0.08, '#1F5F99', tag='span', transform='uppercase'),
-        heading('Please remember to subscribe to e-invoices!', 'clamp(30px,3.8vw,44px)', 600, 1.12, -0.015, '#0B2E4F'),
-        text('<p>Invoices sent by email are generated through the billing software, so please remember to check your spam folder. If you have any questions or concerns regarding your invoices, please contact the secretary.</p>', 16, 1.7, '#3A4854'),
-        text('<p>Instructions for subscribing to e-invoices can be found on the reverse side of your previous invoice.</p>', 16, 1.7, '#3A4854'),
-        con(button('Price list', url('Price list'), size=14, pad=(14, 24), **SKY_BTN),
-            button('Contact the secretary', TEL_SEC, size=14, fg='#0B2E4F', hfg='#0B2E4F', pad=(14, 8), cls='pv-link-btn'),
+        heading('Laskutus', 13, 600, 1.5, 0.08, '#1F5F99', tag='span', transform='uppercase'),
+        heading('Muistathan tilata e-laskun!', 'clamp(30px,3.8vw,44px)', 600, 1.12, -0.015, '#0B2E4F'),
+        text('<p>Sähköpostitse lähetettävät laskut muodostetaan laskutusohjelmalla, joten tarkistathan myös roskapostikansion. Jos sinulla on kysyttävää laskuista, ota yhteyttä sihteeriin.</p>', 16, 1.7, '#3A4854'),
+        text('<p>Ohjeet e-laskun tilaamiseen löytyvät edellisen laskun kääntöpuolelta.</p>', 16, 1.7, '#3A4854'),
+        con(button('Hinnasto', url('Price list'), size=14, pad=(14, 24), **SKY_BTN),
+            button('Ota yhteyttä sihteeriin', TEL_SEC, size=14, fg='#0B2E4F', hfg='#0B2E4F', pad=(14, 8), cls='pv-link-btn'),
             d='row', wrap=True, gap_=12, margin=(4, 0, 0, 0)),
         lines('sky', 6, 'min(100%,300px)', 40, 'md', margin=(4, 0, 0, 0)),
         gap_=20)
@@ -257,9 +257,9 @@ def billing():
                  cls='pv-stagger pv-price-track',
                  extra={'flex_gap_mobile': gap(12), 'flex_wrap_mobile': 'nowrap'})
     row1 = con(left, right, d='row', wrap=True, gap_='clamp(32px,5vw,64px)', align='center', cls='pv-reveal')
-    row2 = con(fact('12 or 4 times per year', 'The billing frequency will remain unchanged'),
-               fact('Twice a year', 'Billing takes place twice a year or according to the agreed arrangement.'),
-               fact('Actual readings', 'For customers with remote-reading meters, invoices are always based on actual meter readings.'),
+    row2 = con(fact('12 tai 4 kertaa vuodessa', 'Laskutusväli pysyy ennallaan'),
+               fact('Kahdesti vuodessa', 'Laskutus tapahtuu kahdesti vuodessa tai sovitun mukaisesti.'),
+               fact('Todelliset lukemat', 'Etäluettavien mittareiden asiakkaiden laskut perustuvat aina todellisiin mittarilukemiin.'),
                d='row', wrap=True, gap_=16, cls='pv-stagger')
     return con(row1, row2, boxed=1136, pad=('clamp(64px,8vw,112px)', 32), gap_='clamp(32px,4vw,48px)', tag='section',
                isinner=False, extra={'_element_id': 'billing'})
@@ -271,12 +271,12 @@ def contact_details():
         photo('cabin-lake', 28, {'pos': {'left': '4%', 'top': 0}, 'w': '92%', 'h': '100%'}),
         minh='clamp(360px,40vw,500px)')
     copy = COL2(420,
-        heading('Meter Readings and Contact Information', 13, 600, 1.5, 0.08, '#1F5F99', tag='span', transform='uppercase'),
-        heading('We kindly ask you to provide the Cooperative with your mobile phone number so that we can send you notifications in exceptional situations when necessary (no other messages will be sent).',
+        heading('Mittarilukemat ja yhteystiedot', 13, 600, 1.5, 0.08, '#1F5F99', tag='span', transform='uppercase'),
+        heading('Pyydämme ilmoittamaan osuuskunnalle matkapuhelinnumerosi, jotta voimme tarvittaessa tiedottaa sinulle poikkeustilanteista (muita viestejä ei lähetetä).',
                 'clamp(22px,2.6vw,30px)', 600, 1.35, -0.01, '#0B2E4F', cls='pv-pretty'),
-        text('<p>We also request your email address, if you have one.</p>', 16, 1.7, '#3A4854'),
-        con(heading('Data Protection', 15, 600, 1.5, col='#0B2E4F', tag='span'),
-            text(f'<p>For matters relating to data protection, you can contact us at: <a href="{MAIL}" style="font-weight:600">pyhtaanvok(at)gmail.com</a></p>', 16, 1.7, '#3A4854'),
+        text('<p>Pyydämme myös sähköpostiosoitettasi, jos sinulla on sellainen.</p>', 16, 1.7, '#3A4854'),
+        con(heading('Tietosuoja', 15, 600, 1.5, col='#0B2E4F', tag='span'),
+            text(f'<p>Tietosuojaan liittyvissä asioissa voit ottaa meihin yhteyttä osoitteeseen: <a href="{MAIL}" style="font-weight:600">pyhtaanvok(at)gmail.com</a></p>', 16, 1.7, '#3A4854'),
             gap_=6, pad=(16, 0, 0, 0),
             extra={'border_border': 'solid', 'border_width': {'unit': 'px', 'top': '1', 'right': '0', 'bottom': '0', 'left': '0', 'isLinked': False}, 'border_color': '#C9D6E0'}),
         lines('sky', 7, 'min(100%,300px)', 40, 'md', margin=(8, 0, 0, 0)),
@@ -290,16 +290,16 @@ def contact_details():
 def contact_card(dark):
     if dark:
         ini, ini_bg, role, role_fg, role_bg, sub, sub_col, name, fg, lc, ldur, num, cbg, cfg, tel, sh = (
-            'MH', '#F2B53A', 'Property Manager', '#D6E8F4', 'rgba(255,255,255,.12)',
-            'Fault Reports, New Water Connections and Emergency Assistance', '#A9D1EA',
-            'Property Manager: Matti Härkänen', '#FFFFFF', 'sky', 6, '041 329 8271', '#F2B53A', '#14202B', TEL_PM,
+            'MH', '#F2B53A', 'Kiinteistönhoitaja', '#D6E8F4', 'rgba(255,255,255,.12)',
+            'Vikailmoitukset, uudet vesiliittymät ja päivystys', '#A9D1EA',
+            'Kiinteistönhoitaja: Matti Härkänen', '#FFFFFF', 'sky', 6, '041 329 8271', '#F2B53A', '#14202B', TEL_PM,
             'rgba(11,46,79,.55)')
         bg = '#0B2E4F'
     else:
         ini, ini_bg, role, role_fg, role_bg, sub, sub_col, name, fg, lc, ldur, num, cbg, cfg, tel, sh = (
-            'MS', '#5FA8D3', 'Secretary', '#1F5F99', '#E8F1F7',
-            'Billing, Change of Address and Other Enquiries/Notifications', '#4A5966',
-            'Secretary: Mona Sissi', '#0B2E4F', 'yellow', 7, '050 330 8896', '#1F5F99', '#FFFFFF', TEL_SEC,
+            'MS', '#5FA8D3', 'Sihteeri', '#1F5F99', '#E8F1F7',
+            'Laskutus, osoitteenmuutokset sekä muut kyselyt ja ilmoitukset', '#4A5966',
+            'Sihteeri: Mona Sissi', '#0B2E4F', 'yellow', 7, '050 330 8896', '#1F5F99', '#FFFFFF', TEL_SEC,
             'rgba(11,46,79,.25)')
         bg = '#FFFFFF'
     top = con(con(heading(ini, 18, 600, 1, col='#0B2E4F', tag='span', align='center'),
@@ -331,9 +331,9 @@ def contact():
                                       hfg='#0B2E4F', hbg='#D6E8F4', pad=(12, 20), radius=999)
     return con(
         image('pv-sun-drop', 180, align='center'),
-        heading('Contact', 'clamp(28px,3.4vw,40px)', 600, 1.5, -0.015, '#0B2E4F', align='center'),
+        heading('Yhteystiedot', 'clamp(28px,3.4vw,40px)', 600, 1.5, -0.015, '#0B2E4F', align='center'),
         con(contact_card(True), contact_card(False), d='row', wrap=True, gap_=20),
-        con(chip('Other contact details (PDF) ↓', PDF), chip('pyhtaanvok@gmail.com →', MAIL),
+        con(chip('Muut yhteystiedot (PDF) ↓', PDF), chip('pyhtaanvok@gmail.com →', MAIL),
             d='row', wrap=True, gap_=12, justify='center'),
         boxed=936, pad=('clamp(64px,8vw,112px)', 32), gap_=28, align='center', tag='section', cls='pv-reveal',
         isinner=False, extra={'_element_id': 'contact'})
@@ -361,8 +361,8 @@ def header():
     phone = button('041 329 8271', TEL_PM, size=15, ls=0, transform='none', fg='#14202B', bg='#F2B53A', hfg='#0B2E4F',
                    hbg='#FFFFFF', pad=(5, 18, 5, 5), radius=999, icon=svg_icon('pv-icon-phone-solid'), cls='pv-phone-pill')
     phone['settings']['button_css_id'] = ''
-    phone['settings']['link']['custom_attributes'] = 'aria-label|Fault reports: call 041 329 8271'
-    menu_btn = button('Menu', '#menu', size=15, ls=0, transform='none', fg='#0B2E4F', bg='#FFFFFF', hfg='#0B2E4F',
+    phone['settings']['link']['custom_attributes'] = 'aria-label|Vikailmoitukset: soita 041 329 8271'
+    menu_btn = button('Valikko', '#menu', size=15, ls=0, transform='none', fg='#0B2E4F', bg='#FFFFFF', hfg='#0B2E4F',
                       hbg='#E8F1F7', pad=(7, 8, 7, 20), radius=999, cls='pv-menu-toggle')
     nav = con(phone, menu_btn, d='row', gap_=8, align='center', tag='nav', extra={'_flex_size': 'none'})
     # one line at every width (no wrap); on phones the buttons collapse to their icons (see pv-site.css)
@@ -397,9 +397,9 @@ def header():
                 pad=('clamp(8px,1.4vh,14px)', 18), cls='pv-drawer-card')
         c['settings'].update({'background_hover_background': 'classic', 'background_hover_color': hbg})
         return c
-    contacts = con(dcard('Fault Reports, New Water Connections and Emergency Assistance', 'Property Manager: Matti Härkänen',
+    contacts = con(dcard('Vikailmoitukset, uudet vesiliittymät ja päivystys', 'Kiinteistönhoitaja: Matti Härkänen',
                          '041 329 8271', TEL_PM, '#F2B53A', '#14202B', '#14202B', '#FFFFFF'),
-                   dcard('Billing, Change of Address and Other Enquiries/Notifications', 'Secretary: Mona Sissi',
+                   dcard('Laskutus, osoitteenmuutokset sekä muut kyselyt ja ilmoitukset', 'Sihteeri: Mona Sissi',
                          '050 330 8896', TEL_SEC, 'rgba(255,255,255,.12)', '#FFFFFF', '#D6E8F4', 'rgba(255,255,255,.22)'),
                    gap_=10)
     # flexible spacer between the menu and the contact cards; the wavy lines sit in the middle of the free space
@@ -436,7 +436,7 @@ def footer():
     color(info['settings'], 'icon_color', '#5FA8D3')
     color(info['settings'], 'text_color', '#D6E8F4')
     left = con(logo, lines('yellow', 6, 'min(100%,220px)', 32, 'foot', opacity=.85),
-               con(info, heading('Business ID: Y 2605405-8', 14, 400, 1.5, col='#A9D1EA', tag='span'), gap_=12),
+               con(info, heading('Y-tunnus: 2605405-8', 14, 400, 1.5, col='#A9D1EA', tag='span'), gap_=12),
                width=280, grow=1, gap_=22)
     _t(left, width=unit('34%'))  # tablets: brand/contacts left, two-column menu right
     nav = widget('navigation-menu', {
@@ -452,19 +452,19 @@ def footer():
                    extra={'flex_wrap_tablet': 'nowrap', 'flex_gap_tablet': gap(32),
                           'flex_gap_mobile': gap(40, 'clamp(32px,5vw,72px)')}),
                boxed=1136, pad=('clamp(16px,2vw,24px)', 32, 'clamp(40px,5vw,64px)', 32))
-    copyright_ = widget('copyright', {'shortcode': 'Copyright © [hfe_current_year] · Pyhtään vesiosuuskunta',
+    copyright_ = widget('copyright', {'shortcode': '© [hfe_current_year] Pyhtään vesiosuuskunta',
                                       'align': 'left', '_css_classes': 'pv-copyright', '_element_width': 'auto',
                                       'text_color': '#A9D1EA', **typo('caption_typography', 14, 400, 1.5)})
-    login = button('Log in', '#', size=14, weight=400, ls=0, transform='none',
+    login = button('Kirjaudu', '#', size=14, weight=400, ls=0, transform='none',
                    fg='#A9D1EA', hfg='#FFFFFF', hbg='#123C63', pad=(8, 14), radius=999)
-    top = button('Top of Page ↑', '#top', size=14, ls=0, transform='none', fg='#14202B', bg='#F2B53A', hfg='#14202B',
+    top = button('Sivun alkuun ↑', '#top', size=14, ls=0, transform='none', fg='#14202B', bg='#F2B53A', hfg='#14202B',
                  hbg='#F2B53A', pad=(8, 16), radius=999, cls='pv-top-btn')
     bar = con(con(copyright_, con(login, top, d='row', gap_=10, align='center'),
                   d='row', wrap=True, justify='space-between', align='center', gap_=12),
               boxed=1136, pad=(16, 32), bg='#082440')
     float_top = button('', '#top', size=15, ls=0, transform='none', fg='#FFFFFF', bg='#1F5F99', hfg='#14202B', hbg='#F2B53A',
                        pad=(15, 15), radius=999, icon=svg_icon('pv-icon-arrow-up'), cls='pv-totop-float')
-    float_top['settings']['link']['custom_attributes'] = 'aria-label|Scroll to top,title|Scroll to top'
+    float_top['settings']['link']['custom_attributes'] = 'aria-label|Takaisin ylös,title|Takaisin ylös'
     float_top['settings'].update(shadow(0, 12, 28, -8, 'rgba(11,46,79,.5)'))
     float_top['settings']['button_box_shadow_box_shadow_type'] = 'yes'
     float_top['settings']['button_box_shadow_box_shadow'] = float_top['settings'].pop('box_shadow_box_shadow')
