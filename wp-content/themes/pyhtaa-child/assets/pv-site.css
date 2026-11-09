@@ -30,7 +30,8 @@ p,li{text-wrap:pretty}
 .elementor-element.pv-edge{background-size:200% 100%!important;background-repeat:repeat-x!important;background-position:0 0;animation:pvEdge 30s linear infinite}
 
 /* ---------- Drifting triple wavy lines (SVG tile = container background image) ---------- */
-.elementor-element.pv-lines{--pv-tile-w:61px;background-repeat:repeat-x!important;background-size:var(--pv-tile-w) auto!important;background-position:0 50%!important;animation:pvDrift 6s linear infinite}
+/* no !important on background-position: an !important value would override (freeze) the drift animation */
+.elementor-element.pv-lines{--pv-tile-w:61px;background-repeat:repeat-x!important;background-size:var(--pv-tile-w) auto!important;background-position:0 50%;animation:pvDrift 6s linear infinite}
 .pv-lines--hero{--pv-tile-w:76px}
 .pv-lines--md{--pv-tile-w:61px}
 .pv-lines--card{--pv-tile-w:46px}
@@ -46,7 +47,8 @@ p,li{text-wrap:pretty}
 .pv-teardrop>.elementor-widget,.pv-teardrop>.e-con-inner>.elementor-widget{transform:rotate(45deg)}
 
 /* ---------- Header ---------- */
-#masthead{position:sticky;top:var(--wp-admin--admin-bar--height,0px);z-index:40;pointer-events:none}
+/* UAE sets .ehf-header #masthead{position:relative}; this selector outranks it so the header stays sticky like the design */
+#masthead,body.ehf-header #masthead{position:sticky;top:var(--wp-admin--admin-bar--height,0px);z-index:40;pointer-events:none}
 #masthead .pv-header-pill,#masthead .pv-drawer,#masthead .pv-overlay{pointer-events:auto}
 .pv-phone-pill .elementor-button{transition:background .25s ease,color .25s ease,transform .25s ease}
 .pv-phone-pill .elementor-button:hover{transform:translateY(-1px)}
