@@ -120,3 +120,18 @@ p,li{text-wrap:pretty}
   .pv-blob,.pv-edge,.pv-lines,.pv-phone-pill .elementor-button-icon svg{animation:none!important}
   .pv-js .pv-reveal.pv-pre{opacity:1;transform:none}
 }
+
+/* Opacity utilities for decorative lines */
+.pv-op-70{opacity:.7}.pv-op-80{opacity:.8}.pv-op-85{opacity:.85}
+.pv-nowrap .elementor-heading-title{white-space:nowrap}
+
+/* Fallback styling for the UAE navigation-menu and copyright widgets (Elementor controls override these) */
+.pv-drawer .hfe-nav-menu a.hfe-menu-item{font-family:Poppins,sans-serif;font-size:clamp(18px,2.2vw,21px);font-weight:500;line-height:1.5;color:#fff;padding:15px 4px}
+.pv-drawer .hfe-nav-menu a.hfe-menu-item:hover,.pv-drawer .hfe-nav-menu a.hfe-menu-item:focus{color:#F2B53A}
+.pv-footer-nav .hfe-nav-menu a.hfe-menu-item{font-family:Poppins,sans-serif;font-size:16px;font-weight:500;line-height:1.5;color:#fff;padding:13px 0}
+.pv-footer-nav .hfe-nav-menu a.hfe-menu-item:hover,.pv-footer-nav .hfe-nav-menu a.hfe-menu-item:focus{color:#F2B53A}
+.pv-drawer .hfe-nav-menu .menu-item.current-menu-item>a.hfe-menu-item,.pv-footer-nav .hfe-nav-menu .menu-item.current-menu-item>a.hfe-menu-item{color:#fff}
+.pv-copyright .hfe-copyright-wrapper,.pv-copyright .hfe-copyright-wrapper a{font-family:Poppins,sans-serif;font-size:14px;line-height:1.5;color:#A9D1EA}
+.pv-footer-info .elementor-icon-list-item a:hover .elementor-icon-list-text{color:#F2B53A}
+.pv-footer-info .elementor-icon-list-item:nth-child(2) .elementor-icon-list-text{color:#fff}
+.pv-footer-info .elementor-icon-list-item:nth-child(2){align-items:center}
