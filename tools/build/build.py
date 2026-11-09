@@ -432,7 +432,7 @@ def footer():
     copyright_ = widget('copyright', {'shortcode': 'Copyright © [hfe_current_year] · Pyhtään vesiosuuskunta',
                                       'align': 'left', '_css_classes': 'pv-copyright', '_element_width': 'auto',
                                       'text_color': '#A9D1EA', **typo('caption_typography', 14, 400, 1.5)})
-    login = button('Log in', 'https://pyhtaanvok.fi-c.seravo.com/wp-admin/', size=14, weight=400, ls=0, transform='none',
+    login = button('Log in', '#', size=14, weight=400, ls=0, transform='none',
                    fg='#A9D1EA', hfg='#FFFFFF', hbg='#123C63', pad=(8, 14), radius=999)
     top = button('Top of Page ↑', '#top', size=14, ls=0, transform='none', fg='#14202B', bg='#F2B53A', hfg='#14202B',
                  hbg='#F2B53A', pad=(8, 16), radius=999, cls='pv-top-btn')
