@@ -171,3 +171,17 @@ body.home .hfe-nav-menu li.pv-hide-on-home{display:none!important}
 /* Icon exactly centred in a round badge: drop the inline line box under the Elementor icon */
 .pv-icon-circle .elementor-widget-icon,.pv-icon-circle .elementor-icon-wrapper,.pv-icon-circle .elementor-icon{display:flex;align-items:center;justify-content:center;line-height:0;margin:0}
 .pv-icon-circle .elementor-icon svg{display:block}
+
+/* Header stays on one line. Phones: phone pill = ringing icon only, Menu = burger only
+   (labels stay in the markup for screen readers); tiny phones get 16px side padding. */
+.pv-header-pill .pv-logo{min-width:0}
+@media (max-width:767px){
+  .pv-phone-pill .elementor-button{padding:5px!important}
+  .pv-phone-pill .elementor-button-content-wrapper,.pv-menu-toggle .elementor-button-content-wrapper{gap:0}
+  .pv-phone-pill .elementor-button-text,.pv-menu-toggle .elementor-button-text{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .pv-menu-toggle .elementor-button{padding:7px!important}
+}
+@media (max-width:359px){
+  .elementor-element.pv-header{--padding-left:16px!important;--padding-right:16px!important}
+  .pv-header-pill.elementor-element{--padding-left:14px!important}
+}

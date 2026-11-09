@@ -302,7 +302,8 @@ def header():
     menu_btn = button('Menu', '#menu', size=15, ls=0, transform='none', fg='#0B2E4F', bg='#FFFFFF', hfg='#0B2E4F',
                       hbg='#E8F1F7', pad=(7, 8, 7, 20), radius=999, cls='pv-menu-toggle')
     nav = con(phone, menu_btn, d='row', gap_=8, align='center', tag='nav', extra={'_flex_size': 'none'})
-    pill_ = con(logo, nav, d='row', justify='space-between', align='center', wrap=True, gap_=(16, 32),
+    # one line at every width (no wrap); on phones the buttons collapse to their icons (see pv-site.css)
+    pill_ = con(logo, nav, d='row', justify='space-between', align='center', gap_=(16, 'clamp(12px,3vw,32px)'),
                 bg='#1F5F99', radius=999, pad=(12, 12, 12, 22), cls='pv-header-pill', boxed=None, width='min(100%,1136px)',
                 extra=shadow(0, 14, 34, 0, 'rgba(11,46,79,.22)'))
 
