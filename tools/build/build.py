@@ -46,30 +46,40 @@ def hero():
     bid['settings']['typography_font_size_mobile'] = unit(12)
     h1['settings']['typography_font_size_mobile'] = unit(34)
     sub['settings']['typography_font_size_mobile'] = unit(15)
+    # Tablets use the same photo-first layout as phones, scaled up
+    _t(bid, typography_font_size=unit(13))
+    _t(h1, typography_font_size=unit(52))
+    _t(sub, typography_font_size=unit(18))
     waves = lines('yellow', 5, 'min(100%,380px)', 44, 'hero', margin=(12, 0, 0, 0))
     waves['settings'].update({'width_mobile': unit(180), 'min_height_mobile': unit(22), 'margin_mobile': dims(4, 0, 0, 0)})
+    _t(waves, width=unit(260), min_height=unit(30), margin=dims(6, 0, 0, 0))
     left = COL2(420,
         bid, h1, sub,
         con(button('Water quality results', url('Water quality results'), fg='#14202B', bg='#F2B53A', hfg='#FFFFFF', hbg='#0B2E4F', pad=(14, 26)),
             button('Price list', url('Price list'), fg='#0B2E4F', hfg='#0B2E4F', pad=(14, 8), cls='pv-link-btn'),
             d='row', gap_=12, wrap=True, extra={'flex_gap_mobile': gap(6), 'flex_align_items_mobile': 'center'}),
         waves,
-        gap_=22, extra={'flex_gap_mobile': gap(12)})
+        gap_=22, extra={'flex_gap_mobile': gap(12), 'flex_gap_tablet': gap(16), 'width_tablet': unit('100%')})
     blob_ = blob('#5FA8D3', 12, 0, {'pos': {'right': '-6%', 'top': '-6%'}, 'w': '58%', 'h': '58%'})
     blob_['settings'].update({'_offset_x_end_mobile': unit(-14), '_offset_y_mobile': unit(-8),
                               'width_mobile': unit('40%'), 'min_height_mobile': unit('52%')})
+    _t(blob_, _offset_x_end=unit('-3%'), _offset_y=unit('-6%'), width=unit('36%'), min_height=unit('56%'))
     lake = photo('hero-lake', 28, {'pos': {'right': 0, 'top': 0}, 'w': '78%', 'h': '64%'})
     lake['settings'].update({'width_mobile': unit('82%'), 'min_height_mobile': unit('68%'),
                              'border_radius_mobile': dims(22)})
+    _t(lake, width=unit('74%'), min_height=unit('72%'))
     tap = photo('hero-tap', 24, {'pos': {'left': 0, 'bottom': 0}, 'w': '56%', 'h': '46%'})
     tap['settings'].update({'width_mobile': unit('48%'), 'min_height_mobile': unit('48%'),
                             'border_radius_mobile': dims(18)})
+    _t(tap, width=unit('46%'), min_height=unit('50%'))
     right = COL2(420, blob_, lake, tap, minh='clamp(380px,46vw,540px)',
-                 extra={'min_height_mobile': unit(250), '_flex_order_mobile': 'start'})
+                 extra={'min_height_mobile': unit(250), '_flex_order_mobile': 'start',
+                        'min_height_tablet': unit(340), '_flex_order_tablet': 'start', 'width_tablet': unit('100%')})
     return con(con(left, right, d='row', wrap=True, gap_=48, align='center',
-                   extra={'flex_gap_mobile': gap(20)}),
+                   extra={'flex_gap_mobile': gap(20), 'flex_gap_tablet': gap(28)}),
                boxed=1136, pad=('clamp(40px,6vw,80px)', 32, 'clamp(48px,6vw,80px)', 32), tag='section', isinner=False,
-               extra={'_element_id': 'hero', 'padding_mobile': dims(18, 32, 40, 32)})
+               extra={'_element_id': 'hero', 'padding_mobile': dims(18, 32, 40, 32),
+                      'padding_tablet': dims(24, 32, 56, 32)})
 
 
 def statement():
@@ -175,6 +185,12 @@ def announcements():
                 boxed=1136, gap_=40, pad=('clamp(32px,5vw,64px)', 32))
     return con(edge('#F7F6F2', 'pv-edge-navy-m6', 30), inner, edge('#0B2E4F', 'pv-edge-cream-6', 26, top=False),
                bg='#0B2E4F', tag='section', isinner=False, extra={'_element_id': 'news'})
+
+
+def _t(element, **kv):
+    """Attach tablet-size (Elementor _tablet, 768-1024px) values to an element."""
+    element['settings'].update({k + '_tablet': v for k, v in kv.items()})
+    return element
 
 
 def _m(element, **kv):

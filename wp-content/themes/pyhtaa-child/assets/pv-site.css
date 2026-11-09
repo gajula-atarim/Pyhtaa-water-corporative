@@ -220,3 +220,4 @@ div.elementor-heading-title,span.elementor-heading-title,p.elementor-heading-tit
   .pv-totop-float .elementor-button{padding:11px!important}
   .pv-totop-float .elementor-button-icon svg{width:20px;height:20px}
 }
+@media (min-width:768px) and (max-width:1024px){.elementor-element.pv-lines.pv-lines--hero{--pv-tile-w:46px}}
