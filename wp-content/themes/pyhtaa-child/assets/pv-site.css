@@ -201,7 +201,15 @@ div.elementor-heading-title,span.elementor-heading-title,p.elementor-heading-tit
 }
 .pv-balance .elementor-heading-title{text-wrap:balance}
 @media (max-width:767px){.elementor-element.pv-lines.pv-lines--hero{--pv-tile-w:34px}}
-/* Phones: price cards side by side; fee labels may use two balanced lines instead of shrinking */
+/* Phones: price cards as swipe cards (78% wide, snap). Auto-advance lives in pv-site.js. */
+.pv-price-dots{display:none}
 @media (max-width:767px){
-  .pv-fee-pill .elementor-heading-title{white-space:normal!important;text-wrap:balance}
+  .elementor-element.pv-price-track{overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:28px!important;margin-bottom:-28px}
+  .elementor-element.pv-price-track::-webkit-scrollbar{display:none}
+  .pv-price-track>.e-con{flex:0 0 78%!important;scroll-snap-align:start;scroll-snap-stop:always}
+  .pv-price-track .pv-fee-pill .elementor-heading-title{white-space:nowrap}
+  .pv-price-dots{display:flex;flex:0 0 100%;justify-content:center;gap:6px;margin-top:14px}
+  .pv-price-dots button{width:7px;height:7px;padding:0;border:0;border-radius:9px;background:#C9D6E0;cursor:pointer;transition:width .3s ease,background .3s ease}
+  .pv-price-dots button.is-active{width:20px;background:#1F5F99}
 }

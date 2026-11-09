@@ -69,6 +69,43 @@
     if (!reduce) setInterval(function () { if (!hovering) { active = (active + 1) % cards.length; paint(); } }, 2200);
   });
 
+  /* ---- Phone price cards: swipe track with dots, auto-advances every 3s ---- */
+  var phone = window.matchMedia('(max-width: 767px)');
+  $$('.pv-price-track').forEach(function (track) {
+    var cards = kids(track);
+    if (cards.length < 2) return;
+    var dots = doc.createElement('div');
+    dots.className = 'pv-price-dots';
+    dots.setAttribute('aria-label', 'Price cards');
+    cards.forEach(function (c, i) {
+      var d = doc.createElement('button');
+      d.type = 'button';
+      d.setAttribute('aria-label', 'Show card ' + (i + 1));
+      d.addEventListener('click', function () { go(i); hold(); });
+      dots.appendChild(d);
+    });
+    track.parentNode.insertBefore(dots, track.nextSibling);
+    var current = 0, paused = false, visible = false, resumeT;
+    function go(i) {
+      current = (i + cards.length) % cards.length;
+      track.scrollTo({ left: cards[current].offsetLeft - cards[0].offsetLeft, behavior: reduce ? 'auto' : 'smooth' });
+    }
+    function sync() {
+      var x = track.scrollLeft, best = 0, bestD = Infinity;
+      cards.forEach(function (c, i) { var d = Math.abs(c.offsetLeft - cards[0].offsetLeft - x); if (d < bestD) { bestD = d; best = i; } });
+      current = best;
+      Array.prototype.forEach.call(dots.children, function (d, i) { d.classList.toggle('is-active', i === best); });
+    }
+    function hold() { paused = true; clearTimeout(resumeT); resumeT = setTimeout(function () { paused = false; }, 6000); }
+    track.addEventListener('scroll', function () { window.requestAnimationFrame(sync); }, { passive: true });
+    ['touchstart', 'pointerdown', 'wheel', 'focusin'].forEach(function (ev) { track.addEventListener(ev, hold, { passive: true }); });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }, { threshold: 0.5 }).observe(track);
+    } else { visible = true; }
+    sync();
+    if (!reduce) setInterval(function () { if (phone.matches && visible && !paused && !doc.hidden) go(current + 1); }, 3000);
+  });
+
   if (reduce || !('IntersectionObserver' in window)) return;
 
   /* ---- Stagger groups: children rise in one after another ---- */

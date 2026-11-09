@@ -184,35 +184,35 @@ def _m(element, **kv):
 
 
 def price_card(dark):
-    # Phones: both cards sit side by side (half width each) with compact padding and type.
+    # Phones: swipe cards (78% wide, snap, auto-advance every 3s - see pv-site.css/js "pv-price-track").
     sz = lambda n: unit(n)
-    card_m = dict(width=unit('calc(50% - 5px)'), padding=dims(18, 14), border_radius=dims(22),
-                  flex_gap={'unit': 'px', 'column': '10', 'row': '10', 'isLinked': True, 'size': 10})
+    card_m = dict(width=unit('78%'), padding=dims(24, 20), border_radius=dims(26),
+                  flex_gap={'unit': 'px', 'column': '12', 'row': '12', 'isLinked': True, 'size': 12})
     if dark:
         b = blob('#1F5F99', 12, -2, {'pos': {'right': -36, 'top': -36}, 'w': 150, 'h': 150})
-        _m(b, width=sz(96), min_height=sz(96), _offset_x_end=sz(-30), _offset_y=sz(-30))
+        _m(b, width=sz(120), min_height=sz(120), _offset_x_end=sz(-36), _offset_y=sz(-36))
         tag = pill('Avoid the €5 additional fee', '#14202B', '#F2B53A', ls=0.02, pad=(6, 10),
                    size='min(11px, calc((100cqw - 20px) / 16.2))', cls='pv-nowrap pv-fee-pill')
-        _m(tag, typography_font_size=sz(10), _padding=dims(5, 9), _border_radius=dims(12))
+        _m(tag, typography_font_size=sz(10.5), _padding=dims(6, 10))
         return _m(con(
             b, tag,
             _m(heading('E-invoice', 16, 500, 1.5, col='#A9D1EA', tag='span', margin=(12, 0, 0, 0)),
-               typography_font_size=sz(14), _margin=dims(4, 0, 0, 0)),
-            _m(heading('€2', 'clamp(56px,6vw,76px)', 600, 1, -0.03, '#FFFFFF', tag='span'), typography_font_size=sz(44)),
-            _m(heading('per e-invoice', 14, 400, 1.5, col='#D6E8F4', tag='span'), typography_font_size=sz(12)),
+               typography_font_size=sz(15), _margin=dims(8, 0, 0, 0)),
+            _m(heading('€2', 'clamp(56px,6vw,76px)', 600, 1, -0.03, '#FFFFFF', tag='span'), typography_font_size=sz(58)),
+            _m(heading('per e-invoice', 14, 400, 1.5, col='#D6E8F4', tag='span'), typography_font_size=sz(13)),
             width=220, grow=1, bg='#0B2E4F', radius=32, pad=(32, 28), gap_=14, overflow='hidden', cls='pv-fee-card',
             extra=shadow(0, 28, 56, -20, 'rgba(11,46,79,.6)')), **card_m)
     tag = pill('€5 additional fee', '#4A5966', '#E8F1F7', ls=0.06, cls='pv-fee-pill')
-    _m(tag, typography_font_size=sz(9), typography_letter_spacing={'unit': 'em', 'size': 0, 'sizes': []},
-       _padding=dims(5, 9), _border_radius=dims(12))
+    _m(tag, typography_font_size=sz(10.5), typography_letter_spacing={'unit': 'em', 'size': 0.04, 'sizes': []},
+       _padding=dims(6, 10))
     return _m(con(
         tag,
         _m(heading('Paper invoice by post', 16, 500, 1.5, col='#4A5966', tag='span', margin=(12, 0, 0, 0)),
-           typography_font_size=sz(14), typography_line_height={'unit': 'em', 'size': 1.3, 'sizes': []},
-           _margin=dims(4, 0, 0, 0)),
-        _m(heading('€5', 'clamp(56px,6vw,76px)', 600, 1, -0.03, '#4A5966', tag='span'), typography_font_size=sz(44)),
+           typography_font_size=sz(15), typography_line_height={'unit': 'em', 'size': 1.4, 'sizes': []},
+           _margin=dims(8, 0, 0, 0)),
+        _m(heading('€5', 'clamp(56px,6vw,76px)', 600, 1, -0.03, '#4A5966', tag='span'), typography_font_size=sz(58)),
         _m(heading('per paper invoice. If you would like to receive invoices by post, please contact the secretary.', 14, 400, 1.5, col='#4A5966', tag='span'),
-           typography_font_size=sz(12), typography_line_height={'unit': 'em', 'size': 1.45, 'sizes': []}),
+           typography_font_size=sz(13), typography_line_height={'unit': 'em', 'size': 1.5, 'sizes': []}),
         width=220, grow=1, bg='#FFFFFF', radius=32, pad=(32, 28), gap_=14,
         extra={'border_border': 'dashed', 'border_width': dims(2), 'border_color': '#C9D6E0'}), **card_m)
 
@@ -235,8 +235,9 @@ def billing():
             d='row', wrap=True, gap_=12, margin=(4, 0, 0, 0)),
         lines('sky', 6, 'min(100%,300px)', 40, 'md', margin=(4, 0, 0, 0)),
         gap_=20)
-    right = COL2(440, price_card(True), price_card(False), d='row', wrap=True, gap_=16, align='stretch', cls='pv-stagger',
-                 extra={'flex_gap_mobile': gap(10), 'flex_wrap_mobile': 'nowrap'})
+    right = COL2(440, price_card(True), price_card(False), d='row', wrap=True, gap_=16, align='stretch',
+                 cls='pv-stagger pv-price-track',
+                 extra={'flex_gap_mobile': gap(12), 'flex_wrap_mobile': 'nowrap'})
     row1 = con(left, right, d='row', wrap=True, gap_='clamp(32px,5vw,64px)', align='center', cls='pv-reveal')
     row2 = con(fact('12 or 4 times per year', 'The billing frequency will remain unchanged'),
                fact('Twice a year', 'Billing takes place twice a year or according to the agreed arrangement.'),
