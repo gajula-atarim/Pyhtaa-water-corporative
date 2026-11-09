@@ -256,7 +256,7 @@ def contact_card(dark):
               heading(name, 'clamp(22px,2.4vw,26px)', 600, 1.5, -0.01, fg, tag='span'), gap_=6)
     bottom = con(heading(num, 'clamp(26px,3vw,34px)', 600, 1.5, -0.01, fg, tag='span', cls='pv-nowrap'),
                  con(icon('pv-icon-phone-line', 26, cfg), width=56, minh=56, bg=cbg, radius=999, justify='center',
-                     align='center', extra={'_flex_size': 'none'}),
+                     align='center', cls='pv-icon-circle', extra={'_flex_size': 'none'}),
                  d='row', justify='space-between', align='center', gap_=16, margin=('auto', 0, 0, 0))
     return con(top, mid, lines(lc, ldur, 160, 30, 'card', opacity=.8), bottom,
                width=360, grow=1, link=tel, bg=bg, radius=32, pad='clamp(24px,3vw,36px)', gap_=28, overflow='hidden',

@@ -167,3 +167,7 @@ body.home .hfe-nav-menu li.pv-hide-on-home{display:none!important}
 
 /* Billing card: the fee label sizes itself to the card width (cqw) so it stays on one line */
 .pv-fee-card{container-type:inline-size}
+
+/* Icon exactly centred in a round badge: drop the inline line box under the Elementor icon */
+.pv-icon-circle .elementor-widget-icon,.pv-icon-circle .elementor-icon-wrapper,.pv-icon-circle .elementor-icon{display:flex;align-items:center;justify-content:center;line-height:0;margin:0}
+.pv-icon-circle .elementor-icon svg{display:block}
