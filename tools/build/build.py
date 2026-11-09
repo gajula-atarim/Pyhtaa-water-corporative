@@ -408,6 +408,11 @@ def auto_widths(elements, parent_row=False):
             st = e['settings']
             if parent_row and 'width' not in st and st.get('position') != 'absolute':
                 st['width'] = unit('auto')
+            # Elementor wraps every container on mobile by default; only the design's auto-fit rows may wrap
+            wrap = st.get('flex_wrap', 'nowrap')
+            st.setdefault('flex_wrap', wrap)
+            st.setdefault('flex_wrap_tablet', wrap)
+            st.setdefault('flex_wrap_mobile', wrap)
             if 'width' in st:  # Elementor defaults tablet/mobile container width to 100%; keep the design's sizing
                 st.setdefault('width_tablet', st['width'])
                 st.setdefault('width_mobile', st['width'])

@@ -146,3 +146,7 @@ p,li{text-wrap:pretty}
 .pv-footer-nav ul.hfe-nav-menu li a.hfe-menu-item::after,.pv-drawer ul.hfe-nav-menu li a.hfe-menu-item::after{content:"\2192"!important;display:inline-block!important;position:static!important;opacity:1!important;background:none!important;width:auto!important;height:auto!important;transform:none!important;margin-left:auto}
 .pv-drawer ul.hfe-nav-menu li a.hfe-menu-item::after{font-size:18px}
 .pv-footer-nav ul.hfe-nav-menu li a.hfe-menu-item::after{font-size:16px;color:#5FA8D3}
+
+/* Drawer close button: 48px circle */
+.pv-menu-close .elementor-button{width:48px;height:48px;padding:0!important;display:flex;align-items:center;justify-content:center;line-height:1!important}
+.pv-menu-close .elementor-button-content-wrapper{justify-content:center}
