@@ -221,3 +221,8 @@ div.elementor-heading-title,span.elementor-heading-title,p.elementor-heading-tit
   .pv-totop-float .elementor-button-icon svg{width:20px;height:20px}
 }
 @media (min-width:768px) and (max-width:1024px){.elementor-element.pv-lines.pv-lines--hero{--pv-tile-w:46px}}
+/* Tablets: footer menu always in two columns next to the brand/contact column */
+@media (min-width:768px) and (max-width:1024px){
+  .pv-footer-nav ul.hfe-nav-menu{grid-template-columns:1fr 1fr!important;column-gap:24px!important}
+  .pv-footer-nav .hfe-nav-menu a.hfe-menu-item{font-size:15px!important}
+}

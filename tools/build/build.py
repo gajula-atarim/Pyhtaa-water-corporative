@@ -437,6 +437,7 @@ def footer():
     left = con(logo, lines('yellow', 6, 'min(100%,220px)', 32, 'foot', opacity=.85),
                con(info, heading('Business ID: Y 2605405-8', 14, 400, 1.5, col='#A9D1EA', tag='span'), gap_=12),
                width=280, grow=1, gap_=22)
+    _t(left, width=unit('34%'))  # tablets: brand/contacts left, two-column menu right
     nav = widget('navigation-menu', {
         'menu': 'main-menu', 'layout': 'vertical', 'navmenu_align': 'left', 'dropdown': 'none', 'pointer': 'none',
         'padding_horizontal_menu_item': unit(0), 'padding_vertical_menu_item': unit(13),
@@ -445,7 +446,9 @@ def footer():
         'color_menu_item': '#FFFFFF', 'color_menu_item_hover': '#F2B53A', 'color_menu_item_active': '#FFFFFF',
         '_css_classes': 'pv-footer-nav'})
     right = con(nav, width=480, grow=2, tag='nav')
-    main = con(con(left, right, d='row', wrap=True, gap_=(40, 'clamp(32px,5vw,72px)'), align='flex-start'),
+    _t(right, width=unit('66%'))
+    main = con(con(left, right, d='row', wrap=True, gap_=(40, 'clamp(32px,5vw,72px)'), align='flex-start',
+                   extra={'flex_wrap_tablet': 'nowrap', 'flex_gap_tablet': gap(32)}),
                boxed=1136, pad=('clamp(16px,2vw,24px)', 32, 'clamp(40px,5vw,64px)', 32))
     copyright_ = widget('copyright', {'shortcode': 'Copyright © [hfe_current_year] · Pyhtään vesiosuuskunta',
                                       'align': 'left', '_css_classes': 'pv-copyright', '_element_width': 'auto',
