@@ -408,6 +408,9 @@ def auto_widths(elements, parent_row=False):
             st = e['settings']
             if parent_row and 'width' not in st and st.get('position') != 'absolute':
                 st['width'] = unit('auto')
+            if 'width' in st:  # Elementor defaults tablet/mobile container width to 100%; keep the design's sizing
+                st.setdefault('width_tablet', st['width'])
+                st.setdefault('width_mobile', st['width'])
             auto_widths(e['elements'], st.get('flex_direction') == 'row')
     return elements
 

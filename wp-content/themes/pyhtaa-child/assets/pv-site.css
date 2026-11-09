@@ -139,3 +139,10 @@ p,li{text-wrap:pretty}
 .pv-footer-info .elementor-icon-list-item:nth-child(2){align-items:center}
 
 .pv-footer-info .elementor-icon-list-icon svg{color:#5FA8D3;width:18px;height:18px}
+
+/* Grid/flex menus: the clearfix pseudo-elements must not become grid items */
+.pv-footer-nav ul.hfe-nav-menu::before,.pv-footer-nav ul.hfe-nav-menu::after,.pv-drawer ul.hfe-nav-menu::before,.pv-drawer ul.hfe-nav-menu::after{content:none!important;display:none!important}
+/* Arrow after each menu link (UAE pointer styles reset ::after, so restate it) */
+.pv-footer-nav ul.hfe-nav-menu li a.hfe-menu-item::after,.pv-drawer ul.hfe-nav-menu li a.hfe-menu-item::after{content:"\2192"!important;display:inline-block!important;position:static!important;opacity:1!important;background:none!important;width:auto!important;height:auto!important;transform:none!important;margin-left:auto}
+.pv-drawer ul.hfe-nav-menu li a.hfe-menu-item::after{font-size:18px}
+.pv-footer-nav ul.hfe-nav-menu li a.hfe-menu-item::after{font-size:16px;color:#5FA8D3}

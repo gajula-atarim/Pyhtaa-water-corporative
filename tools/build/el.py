@@ -227,7 +227,8 @@ def common(s, cls=None, margin=None, pad=None, width=None, abs_=None, z=None, bg
 
 
 def heading(text, size, weight=600, lh=1.5, ls=None, col=None, tag='h2', transform=None, align=None, link=None, **kw):
-    s = {'title': text, 'header_size': tag}
+    # the design's <span> labels are block children of flex columns; use <div> so line-height applies exactly
+    s = {'title': text, 'header_size': 'div' if tag == 'span' else tag}
     s.update(typo('typography', size, weight, lh, ls, transform))
     color(s, 'title_color', col)
     if align:
