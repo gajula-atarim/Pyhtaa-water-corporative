@@ -1,0 +1,122 @@
+/* Pyhtää Water Cooperative – design behaviours for Elementor blocks.
+   Layout, typography and colours live in Elementor. This file only adds what
+   Elementor has no control for: keyframe animations, scroll reveal, the menu
+   drawer state and a few pseudo-element details. Hook classes start with "pv-". */
+
+body{-webkit-font-smoothing:antialiased;overflow-x:clip}
+h1,h2,h3,h4,.elementor-heading-title{text-wrap:balance}
+p,li{text-wrap:pretty}
+.elementor-widget-text-editor p:last-child{margin-bottom:0}
+.elementor-widget-text-editor p{margin-top:0}
+
+/* ---------- Keyframes (from the design) ---------- */
+@keyframes pvRing{0%,70%,100%{transform:rotate(0)}75%{transform:rotate(-14deg)}80%{transform:rotate(12deg)}85%{transform:rotate(-10deg)}90%{transform:rotate(8deg)}}
+@keyframes pvBlob{0%{border-radius:58% 42% 36% 64%/55% 38% 62% 45%;transform:rotate(0deg) scale(1)}50%{border-radius:40% 60% 62% 38%/42% 60% 40% 58%;transform:rotate(8deg) scale(1.04)}100%{border-radius:64% 36% 48% 52%/36% 54% 46% 64%;transform:rotate(-6deg) scale(.98)}}
+@keyframes pvEdge{from{background-position:0 0}to{background-position:100% 0}}
+@keyframes pvDrift{from{background-position-x:0}to{background-position-x:calc(-1 * var(--pv-tile-w))}}
+
+/* Animation timing utilities: pv-dur-N = N seconds, pv-delay-mN = -N seconds */
+.pv-dur-4{animation-duration:4s!important}.pv-dur-5{animation-duration:5s!important}.pv-dur-6{animation-duration:6s!important}.pv-dur-7{animation-duration:7s!important}
+.pv-dur-12{animation-duration:12s!important}.pv-dur-13{animation-duration:13s!important}.pv-dur-14{animation-duration:14s!important}.pv-dur-15{animation-duration:15s!important}
+.pv-dur-26{animation-duration:26s!important}.pv-dur-27{animation-duration:27s!important}.pv-dur-28{animation-duration:28s!important}.pv-dur-30{animation-duration:30s!important}.pv-dur-32{animation-duration:32s!important}.pv-dur-34{animation-duration:34s!important}
+.pv-delay-m2{animation-delay:-2s!important}.pv-delay-m3{animation-delay:-3s!important}.pv-delay-m4{animation-delay:-4s!important}.pv-delay-m7{animation-delay:-7s!important}
+
+/* ---------- Morphing blob (colour = container background in Elementor) ---------- */
+.pv-blob{border-radius:58% 42% 36% 64%/55% 38% 62% 45%;animation:pvBlob 12s ease-in-out 0s infinite alternate;pointer-events:none}
+
+/* ---------- Wave edge between sections (wave SVG = container background image) ---------- */
+.elementor-element.pv-edge{background-size:200% 100%!important;background-repeat:repeat-x!important;background-position:0 0;animation:pvEdge 30s linear infinite}
+
+/* ---------- Drifting triple wavy lines (SVG tile = container background image) ---------- */
+.elementor-element.pv-lines{--pv-tile-w:61px;background-repeat:repeat-x!important;background-size:var(--pv-tile-w) auto!important;background-position:0 50%!important;animation:pvDrift 6s linear infinite}
+.pv-lines--hero{--pv-tile-w:76px}
+.pv-lines--md{--pv-tile-w:61px}
+.pv-lines--card{--pv-tile-w:46px}
+.pv-lines--foot{--pv-tile-w:49px}
+.pv-lines--drawer{--pv-tile-w:52px}
+.pv-lines--quick{--pv-tile-w:34px}
+
+/* ---------- Photo cards: hairline inner border on top of the overlay ---------- */
+.pv-photo::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+
+/* ---------- Teardrop shape (rotated 50% 0 50% 50% box, content counter-rotated) ---------- */
+.pv-teardrop{transform:rotate(-45deg)}
+.pv-teardrop>.elementor-widget,.pv-teardrop>.e-con-inner>.elementor-widget{transform:rotate(45deg)}
+
+/* ---------- Header ---------- */
+#masthead{position:sticky;top:var(--wp-admin--admin-bar--height,0px);z-index:40;pointer-events:none}
+#masthead .pv-header-pill,#masthead .pv-drawer,#masthead .pv-overlay{pointer-events:auto}
+.pv-phone-pill .elementor-button{transition:background .25s ease,color .25s ease,transform .25s ease}
+.pv-phone-pill .elementor-button:hover{transform:translateY(-1px)}
+.pv-phone-pill .elementor-button-content-wrapper{gap:10px;align-items:center}
+.pv-phone-pill .elementor-button-icon{width:38px;height:38px;flex:none;border-radius:999px;background:#0B2E4F;color:#F2B53A;display:flex;align-items:center;justify-content:center;margin:0!important}
+.pv-phone-pill .elementor-button-icon svg{width:18px;height:18px;fill:currentColor;animation:pvRing 3s ease-in-out infinite}
+.pv-menu-toggle .elementor-button{transition:background .25s ease;cursor:pointer}
+.pv-menu-toggle .elementor-button-content-wrapper{gap:12px;align-items:center}
+.pv-burger{position:relative;width:34px;height:34px;border-radius:999px;background:#1F5F99;display:block;flex:none}
+.pv-burger i{position:absolute;left:10px;width:14px;height:2px;border-radius:2px;background:#fff;transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .2s ease}
+.pv-burger i:nth-child(1){top:12px}.pv-burger i:nth-child(2){top:16px}.pv-burger i:nth-child(3){top:20px}
+.pv-menu-open .pv-burger i:nth-child(1){transform:translateY(4px) rotate(45deg)}
+.pv-menu-open .pv-burger i:nth-child(2){opacity:0}
+.pv-menu-open .pv-burger i:nth-child(3){transform:translateY(-4px) rotate(-45deg)}
+
+/* ---------- Menu drawer + overlay ---------- */
+.elementor-element.pv-overlay{position:fixed!important;inset:0;z-index:60;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none!important;transition:opacity .4s ease}
+.pv-menu-open .elementor-element.pv-overlay{opacity:1;pointer-events:auto!important}
+.elementor-element.pv-drawer{position:fixed!important;top:0;right:0;bottom:0;z-index:61;width:min(100%,440px);overflow-y:auto;transform:translateX(105%);visibility:hidden;transition:transform .55s cubic-bezier(.2,.8,.2,1),visibility 0s linear .55s}
+.pv-menu-open .elementor-element.pv-drawer{transform:translateX(0);visibility:visible;transition:transform .55s cubic-bezier(.2,.8,.2,1),visibility 0s linear 0s}
+.pv-menu-close .elementor-button{transition:transform .3s ease,background .3s ease,color .3s ease;cursor:pointer}
+.pv-menu-close .elementor-button:hover{transform:rotate(90deg)}
+.pv-drawer .hfe-nav-menu{display:flex;flex-direction:column}
+.pv-drawer .hfe-nav-menu>li{border-bottom:1px solid rgba(255,255,255,.18);opacity:0;transform:translateX(40px);transition:opacity .45s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.pv-menu-open .pv-drawer .hfe-nav-menu>li{opacity:1;transform:translateX(0)}
+.pv-drawer .hfe-nav-menu a.hfe-menu-item{display:flex!important;justify-content:space-between;align-items:center;gap:16px;transition:color .2s ease,padding .25s ease}
+.pv-drawer .hfe-nav-menu a.hfe-menu-item::after,.pv-footer-nav .hfe-nav-menu a.hfe-menu-item::after{content:"\2192";font-size:18px}
+.pv-footer-nav .hfe-nav-menu a.hfe-menu-item::after{font-size:16px;color:#5FA8D3}
+.pv-drawer .hfe-nav-menu a.hfe-menu-item:hover{padding-left:12px!important}
+.pv-drawer-card{transition:background .25s ease,color .25s ease}
+
+/* ---------- Footer ---------- */
+.pv-footer-nav .hfe-nav-menu{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:0 32px}
+.pv-footer-nav .hfe-nav-menu>li{border-bottom:1px solid #1E4A73}
+.pv-footer-nav .hfe-nav-menu a.hfe-menu-item{display:flex!important;justify-content:space-between;align-items:center;gap:12px;transition:color .2s ease,padding .25s ease}
+.pv-footer-nav .hfe-nav-menu a.hfe-menu-item:hover{padding-left:8px!important}
+.pv-top-btn .elementor-button{transition:transform .25s ease;cursor:pointer}
+.pv-top-btn .elementor-button:hover{transform:translateY(-2px)}
+.elementor-element.pv-totop-float{position:fixed!important;right:20px;bottom:20px;z-index:50;width:auto!important;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .35s ease,transform .35s cubic-bezier(.2,.8,.2,1.2)}
+.pv-show-top .elementor-element.pv-totop-float{opacity:1;transform:translateY(0);pointer-events:auto}
+.pv-totop-float .elementor-button{transition:background .25s ease,color .25s ease;cursor:pointer}
+.pv-totop-float .elementor-button-icon{margin:0!important}
+.pv-totop-float .elementor-button-icon svg{width:22px;height:22px}
+
+/* ---------- Buttons with lift on hover ---------- */
+.pv-lift .elementor-button{transition:transform .25s ease,background .25s ease,color .25s ease}
+.pv-lift .elementor-button:hover{transform:translateY(-2px)}
+.pv-link-btn .elementor-button{text-decoration:underline;text-underline-offset:5px}
+
+/* ---------- Quick links (auto-cycling active card) ---------- */
+.pv-quick{transition:background .5s ease,color .5s ease,transform .5s cubic-bezier(.2,.8,.2,1.2),box-shadow .5s ease,border-color .5s ease}
+.pv-quick .pv-quick__drop{transition:background .5s ease,transform .6s cubic-bezier(.2,.8,.2,1.3),box-shadow .5s ease}
+.pv-quick .pv-quick__drop .elementor-icon{transition:color .5s ease}
+.pv-quick .elementor-heading-title{transition:color .5s ease}
+.pv-quick .pv-quick__wave{opacity:0;transform:scaleX(.2);transition:opacity .4s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.pv-quick.is-active{transform:translateY(-6px)}
+.pv-quick.is-active .elementor-heading-title{color:#0B2E4F!important}
+.pv-quick.is-active .pv-quick__drop{background-color:#0B2E4F!important;box-shadow:0 14px 28px rgba(11,46,79,.32)!important;transform:rotate(-45deg) scale(1.15)}
+.pv-quick.is-active .pv-quick__drop .elementor-icon{color:#fff!important}
+.pv-quick.is-active .pv-quick__drop .elementor-icon svg{stroke:#fff}
+.pv-quick.is-active .pv-quick__wave{opacity:1;transform:scaleX(1)}
+
+/* ---------- Contact cards ---------- */
+.pv-contact-card{transition:transform .35s cubic-bezier(.2,.8,.2,1.2),box-shadow .35s ease}
+.pv-contact-card:hover{transform:translateY(-8px);box-shadow:0 32px 60px -20px rgba(11,46,79,.5)!important}
+
+/* ---------- Scroll reveal (added by pv-site.js, off in the Elementor editor) ---------- */
+.pv-js .pv-reveal.pv-pre{opacity:0;transform:translateY(36px)}
+.pv-js .pv-reveal.pv-anim{transition:opacity .8s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  .pv-blob,.pv-edge,.pv-lines,.pv-phone-pill .elementor-button-icon svg{animation:none!important}
+  .pv-js .pv-reveal.pv-pre{opacity:1;transform:none}
+}
