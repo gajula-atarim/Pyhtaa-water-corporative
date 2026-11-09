@@ -165,11 +165,12 @@ def price_card(dark):
     if dark:
         return con(
             blob('#1F5F99', 12, -2, {'pos': {'right': -36, 'top': -36}, 'w': 150, 'h': 150}),
-            pill('Avoid the €5 additional fee', '#14202B', '#F2B53A', ls=0.06),
+            pill('Avoid the €5 additional fee', '#14202B', '#F2B53A', ls=0.02, pad=(6, 10),
+                 size='min(11px, calc((100cqw - 20px) / 16.2))', cls='pv-nowrap'),
             heading('E-invoice', 16, 500, 1.5, col='#A9D1EA', tag='span', margin=(12, 0, 0, 0)),
             heading('€2', 'clamp(56px,6vw,76px)', 600, 1, -0.03, '#FFFFFF', tag='span'),
             heading('per e-invoice', 14, 400, 1.5, col='#D6E8F4', tag='span'),
-            width=220, grow=1, bg='#0B2E4F', radius=32, pad=(32, 28), gap_=14, overflow='hidden',
+            width=220, grow=1, bg='#0B2E4F', radius=32, pad=(32, 28), gap_=14, overflow='hidden', cls='pv-fee-card',
             extra=shadow(0, 28, 56, -20, 'rgba(11,46,79,.6)'))
     return con(
         pill('€5 additional fee', '#4A5966', '#E8F1F7', ls=0.06),

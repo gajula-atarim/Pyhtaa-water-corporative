@@ -338,6 +338,6 @@ def lines(colname, dur, w, h, variant, margin=None, opacity=None, cls=''):
     return c
 
 
-def pill(text_, fg, bg, size=12, ls=0.08, pad=(6, 12), weight=600):
+def pill(text_, fg, bg, size=12, ls=0.08, pad=(6, 12), weight=600, cls=None):
     return heading(text_, size, weight, 1.5, ls, fg, tag='span', transform='uppercase',
-                   bg=bg, radius=999, pad=pad, width='auto', align_self='flex-start')
+                   bg=bg, radius=999, pad=pad, width='auto', align_self='flex-start', cls=cls)
