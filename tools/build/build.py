@@ -290,12 +290,17 @@ def contact_card(dark):
               heading(role, 12, 600, 1.5, 0.08, role_fg, tag='span', transform='uppercase', bg=role_bg, radius=999,
                       pad=(7, 14), width='auto'),
               d='row', justify='space-between', align='center', gap_=12)
-    mid = con(heading(sub, 15, 400, 1.5, col=sub_col, tag='span'),
-              heading(name, 'clamp(22px,2.4vw,26px)', 600, 1.5, -0.01, fg, tag='span'), gap_=6)
-    bottom = con(heading(num, 'clamp(26px,3vw,34px)', 600, 1.5, -0.01, fg, tag='span', cls='pv-nowrap'),
-                 con(icon('pv-icon-phone-line', 26, cfg), width=56, minh=56, bg=cbg, radius=999, justify='center',
-                     align='center', cls='pv-icon-circle', extra={'_flex_size': 'none'}),
-                 d='row', justify='space-between', align='center', gap_=16, margin=('auto', 0, 0, 0))
+    # phone values (_mobile) keep the number and call circle side by side without overlapping
+    mid = con(_m(heading(sub, 15, 400, 1.5, col=sub_col, tag='span'), typography_font_size=unit(14)),
+              _m(heading(name, 'clamp(22px,2.4vw,26px)', 600, 1.5, -0.01, fg, tag='span'), typography_font_size=unit(19)),
+              gap_=6)
+    bottom = con(_m(heading(num, 'clamp(26px,3vw,34px)', 600, 1.5, -0.01, fg, tag='span', cls='pv-nowrap'),
+                    typography_font_size=unit(22)),
+                 _m(con(_m(icon('pv-icon-phone-line', 26, cfg), size=unit(22)), width=56, minh=56, bg=cbg, radius=999,
+                        justify='center', align='center', cls='pv-icon-circle', extra={'_flex_size': 'none'}),
+                    width=unit(48), min_height=unit(48)),
+                 d='row', justify='space-between', align='center', gap_=16, margin=('auto', 0, 0, 0),
+                 extra={'flex_gap_mobile': gap(12)})
     return con(top, mid, lines(lc, ldur, 160, 30, 'card', opacity=.8), bottom,
                width=360, grow=1, link=tel, bg=bg, radius=32, pad='clamp(24px,3vw,36px)', gap_=28, overflow='hidden',
                cls='pv-contact-card', extra=shadow(0, 24, 48, -20, sh))

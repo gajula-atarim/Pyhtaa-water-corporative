@@ -213,3 +213,9 @@ div.elementor-heading-title,span.elementor-heading-title,p.elementor-heading-tit
   .pv-price-dots button{width:7px;height:7px;padding:0;border:0;border-radius:9px;background:#C9D6E0;cursor:pointer;transition:width .3s ease,background .3s ease}
   .pv-price-dots button.is-active{width:20px;background:#1F5F99}
 }
+/* Phones: smaller floating scroll-to-top, tucked into the corner */
+@media (max-width:767px){
+  .elementor-element.pv-totop-float{right:12px;bottom:12px}
+  .pv-totop-float .elementor-button{padding:11px!important}
+  .pv-totop-float .elementor-button-icon svg{width:20px;height:20px}
+}
