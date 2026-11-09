@@ -339,7 +339,7 @@ def header():
                    gap_=10)
     # flexible spacer between the menu and the contact cards; the wavy lines sit in the middle of the free space
     waves = con(lines('yellow', 6, 200, 34, 'drawer', opacity=.7, cls='pv-drawer-lines'),
-                justify='center', align='flex-start', minh=0, overflow='hidden', cls='pv-drawer-spacer',
+                justify='center', align='center', minh=0, overflow='hidden', cls='pv-drawer-spacer',
                 extra={'_flex_size': 'custom', '_flex_grow': 1, '_flex_shrink': 1})
     drawer = con(con(dlogo, close, d='row', justify='space-between', align='center', gap_=12),
                  nav_menu, waves, contacts,
