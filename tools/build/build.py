@@ -24,7 +24,8 @@ PAGES = {}  # title -> url
 
 
 def url(title):
-    return PAGES[title]
+    # Inner pages are placeholders for now: every link except Home points to '#'.
+    return PAGES[title] if title == 'Home' else '#'
 
 
 TEL_PM = 'tel:+358413298271'
