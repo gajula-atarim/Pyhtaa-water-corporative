@@ -302,9 +302,11 @@ def contact_card(dark):
                     width=unit(48), min_height=unit(48)),
                  d='row', justify='space-between', align='center', gap_=16, margin=('auto', 0, 0, 0),
                  extra={'flex_gap_mobile': gap(12)})
-    return con(top, mid, lines(lc, ldur, 160, 30, 'card', opacity=.8), bottom,
+    card = con(top, mid, lines(lc, ldur, 160, 30, 'card', opacity=.8), bottom,
                width=360, grow=1, link=tel, bg=bg, radius=32, pad='clamp(24px,3vw,36px)', gap_=28, overflow='hidden',
                cls='pv-contact-card', extra=shadow(0, 24, 48, -20, sh))
+    card['settings']['width_tablet'] = unit('calc(50% - 10px)')  # tablets: the two cards side by side
+    return card
 
 
 def contact():
