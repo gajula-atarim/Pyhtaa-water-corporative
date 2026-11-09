@@ -150,3 +150,6 @@ p,li{text-wrap:pretty}
 /* Drawer close button: 48px circle */
 .pv-menu-close .elementor-button{width:48px;height:48px;padding:0!important;display:flex;align-items:center;justify-content:center;line-height:1!important}
 .pv-menu-close .elementor-button-content-wrapper{justify-content:center}
+
+/* Menu items with the class "pv-hide-on-home" (Appearance → Menus → CSS Classes) are hidden on the front page only */
+body.home .hfe-nav-menu li.pv-hide-on-home{display:none!important}
