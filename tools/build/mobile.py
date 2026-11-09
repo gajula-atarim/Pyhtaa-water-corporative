@@ -12,7 +12,7 @@ from el import unit, dims
 # desktop font-size spec -> phone font size (px)
 HEADING_SIZES = {
     'clamp(40px,5.6vw,68px)': 36,   # hero H1: two lines "Pyhtää Water / Cooperative"
-    19: 16,                         # hero subtitle on one line
+    19: 15,                         # hero subtitle on one line (balanced 2 lines on the narrowest phones)
     'clamp(28px,3.6vw,40px)': 26,   # "Water Testing Results Are Available"
     'clamp(24px,2.8vw,32px)': 21,   # announcement heading
     'clamp(28px,3.4vw,40px)': 26,   # "Meter Readings and Contact Information", "Contact"

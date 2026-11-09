@@ -41,7 +41,7 @@ def hero():
     left = COL2(420,
         heading('Business ID: Y 2605405-8', 14, 400, 1.5, col='#4A5966', tag='span'),
         heading('Pyhtää Water Cooperative', 'clamp(40px,5.6vw,68px)', 600, 1.05, -0.02, '#0B2E4F', tag='h1'),
-        heading('Home page of Pyhtää Water Cooperative', 19, 400, 1.5, col='#3A4854', tag='p'),
+        heading('Home page of Pyhtää Water Cooperative', 19, 400, 1.5, col='#3A4854', tag='p', cls='pv-balance'),
         con(button('Water quality results', url('Water quality results'), fg='#14202B', bg='#F2B53A', hfg='#FFFFFF', hbg='#0B2E4F', pad=(14, 26)),
             button('Price list', url('Price list'), fg='#0B2E4F', hfg='#0B2E4F', pad=(14, 8), cls='pv-link-btn'),
             d='row', gap_=12, wrap=True),

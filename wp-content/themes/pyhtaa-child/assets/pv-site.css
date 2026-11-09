@@ -199,3 +199,4 @@ div.elementor-heading-title,span.elementor-heading-title,p.elementor-heading-tit
 @media (max-width:767px){
   .pv-copyright .hfe-copyright-wrapper,.pv-copyright .hfe-copyright-wrapper a{font-size:13px}
 }
+.pv-balance .elementor-heading-title{text-wrap:balance}
