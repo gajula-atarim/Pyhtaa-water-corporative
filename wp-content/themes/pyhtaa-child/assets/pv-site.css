@@ -183,5 +183,8 @@ body.home .hfe-nav-menu li.pv-hide-on-home{display:none!important}
 }
 @media (max-width:359px){
   .elementor-element.pv-header{--padding-left:16px!important;--padding-right:16px!important}
-  .pv-header-pill.elementor-element{--padding-left:14px!important}
+  .pv-header-pill.elementor-element{--padding-left:14px!important;--padding-right:8px!important;--column-gap:8px!important;--gap:16px 8px!important}
+  .pv-header-pill nav.elementor-element{--column-gap:4px!important;--gap:4px 4px!important}
+  .pv-header-pill .pv-logo{--column-gap:8px!important;--gap:8px 8px!important}
+  .pv-header-pill .pv-logo .elementor-widget-heading:last-child .elementor-heading-title{font-size:13px!important}
 }
