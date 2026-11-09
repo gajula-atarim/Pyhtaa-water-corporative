@@ -37,7 +37,7 @@
       if (t) { if (!t.dataset.pvLabel) t.dataset.pvLabel = t.textContent; t.textContent = open ? 'Close' : t.dataset.pvLabel; }
     });
     // staggered menu items: .15s + i*.05s when opening
-    $$('.pv-drawer .hfe-nav-menu > li').forEach(function (li, i) {
+    $$('.pv-drawer ul.hfe-nav-menu > li').forEach(function (li, i) {
       li.style.transitionDelay = open ? (0.15 + i * 0.05) + 's' : '0s';
     });
   }

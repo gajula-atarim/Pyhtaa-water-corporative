@@ -326,8 +326,8 @@ def edge(prev_bg, svg, dur, top=True):
     return c
 
 
-def lines(colname, dur, w, h, variant, margin=None, opacity=None):
-    c = con(width=w, minh=h, cls=f'pv-lines pv-lines--{variant} pv-dur-{dur}', margin=margin,
+def lines(colname, dur, w, h, variant, margin=None, opacity=None, cls=''):
+    c = con(width=w, minh=h, cls=f'pv-lines pv-lines--{variant} pv-dur-{dur} {cls}'.strip(), margin=margin,
             extra={'_flex_size': 'none'})
     c['settings']['background_background'] = 'classic'
     c['settings']['background_image'] = media(f'pv-lines-{colname}')

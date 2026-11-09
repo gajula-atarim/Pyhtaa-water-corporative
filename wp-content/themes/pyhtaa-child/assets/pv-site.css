@@ -4,7 +4,9 @@
    drawer state and a few pseudo-element details. Hook classes start with "pv-". */
 
 body{-webkit-font-smoothing:antialiased;overflow-x:clip}
-h1,h2,h3,h4,.elementor-heading-title{text-wrap:balance}
+h1,h2,h3,h4{text-wrap:balance}
+.pv-pretty .elementor-heading-title{text-wrap:pretty}
+.elementor-widget-text-editor a{text-decoration:underline}
 p,li{text-wrap:pretty}
 .elementor-widget-text-editor p:last-child{margin-bottom:0}
 .elementor-widget-text-editor p{margin-top:0}
@@ -67,9 +69,9 @@ p,li{text-wrap:pretty}
 .pv-menu-open .elementor-element.pv-drawer{transform:translateX(0);visibility:visible;transition:transform .55s cubic-bezier(.2,.8,.2,1),visibility 0s linear 0s}
 .pv-menu-close .elementor-button{transition:transform .3s ease,background .3s ease,color .3s ease;cursor:pointer}
 .pv-menu-close .elementor-button:hover{transform:rotate(90deg)}
-.pv-drawer .hfe-nav-menu{display:flex;flex-direction:column}
-.pv-drawer .hfe-nav-menu>li{border-bottom:1px solid rgba(255,255,255,.18);opacity:0;transform:translateX(40px);transition:opacity .45s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
-.pv-menu-open .pv-drawer .hfe-nav-menu>li{opacity:1;transform:translateX(0)}
+.pv-drawer ul.hfe-nav-menu{display:flex;flex-direction:column}
+.pv-drawer ul.hfe-nav-menu>li{border-bottom:1px solid rgba(255,255,255,.18);opacity:0;transform:translateX(40px);transition:opacity .45s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.pv-menu-open .pv-drawer ul.hfe-nav-menu>li{opacity:1;transform:translateX(0)}
 .pv-drawer .hfe-nav-menu a.hfe-menu-item{display:flex!important;justify-content:space-between;align-items:center;gap:16px;transition:color .2s ease,padding .25s ease}
 .pv-drawer .hfe-nav-menu a.hfe-menu-item::after,.pv-footer-nav .hfe-nav-menu a.hfe-menu-item::after{content:"\2192";font-size:18px}
 .pv-footer-nav .hfe-nav-menu a.hfe-menu-item::after{font-size:16px;color:#5FA8D3}
@@ -77,8 +79,8 @@ p,li{text-wrap:pretty}
 .pv-drawer-card{transition:background .25s ease,color .25s ease}
 
 /* ---------- Footer ---------- */
-.pv-footer-nav .hfe-nav-menu{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:0 32px}
-.pv-footer-nav .hfe-nav-menu>li{border-bottom:1px solid #1E4A73}
+.pv-footer-nav ul.hfe-nav-menu{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:0 32px}
+.pv-footer-nav ul.hfe-nav-menu>li{border-bottom:1px solid #1E4A73}
 .pv-footer-nav .hfe-nav-menu a.hfe-menu-item{display:flex!important;justify-content:space-between;align-items:center;gap:12px;transition:color .2s ease,padding .25s ease}
 .pv-footer-nav .hfe-nav-menu a.hfe-menu-item:hover{padding-left:8px!important}
 .pv-top-btn .elementor-button{transition:transform .25s ease;cursor:pointer}
@@ -135,3 +137,5 @@ p,li{text-wrap:pretty}
 .pv-footer-info .elementor-icon-list-item a:hover .elementor-icon-list-text{color:#F2B53A}
 .pv-footer-info .elementor-icon-list-item:nth-child(2) .elementor-icon-list-text{color:#fff}
 .pv-footer-info .elementor-icon-list-item:nth-child(2){align-items:center}
+
+.pv-footer-info .elementor-icon-list-icon svg{color:#5FA8D3;width:18px;height:18px}

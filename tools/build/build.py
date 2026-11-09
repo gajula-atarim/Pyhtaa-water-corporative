@@ -76,7 +76,7 @@ def quick_card(title, ic):
                margin=(14, 0, 0, 0), extra={'_flex_size': 'none'})
     return con(drop,
                heading(title, 18, 600, 1.3, col='#14202B', tag='span', align='center'),
-               lines('navy', 4, 96, 22, 'quick'),
+               lines('navy', 4, 96, 22, 'quick', cls='pv-quick__wave'),
                width=160, grow=1, link=url(title), pad=(28, 16, 24, 16), radius=24, gap_=14, align='center',
                cls='pv-quick')
 
@@ -92,7 +92,7 @@ def notice_band():
             heading('August 14, 2026', 14, 500, 1.5, col='#14202B', tag='span', width='auto'),
             d='row', gap_=12, align='center', wrap=True),
         heading('Due to increased costs, the Board of Directors decided at its meeting on August 12, 2026, to increase prices!',
-                'clamp(24px,2.8vw,32px)', 600, 1.25, -0.01, '#14202B'),
+                'clamp(24px,2.8vw,32px)', 600, 1.25, -0.01, '#14202B', cls='pv-pretty'),
         text('<p>The updated price list can be found on the dedicated tab.</p>', 16, 1.6, '#14202B'),
         text('<p>An SMS notification will also be sent to all shareholders whose contact details are available with the secretary.</p>', 16, 1.6, '#14202B'),
         button('Updated price list', url('Price list'), size=14, fg='#FFFFFF', bg='#14202B', hfg='#FFFFFF', hbg='#0B2E4F', pad=(14, 24)),
@@ -216,7 +216,7 @@ def contact_details():
     copy = COL2(420,
         heading('Meter Readings and Contact Information', 13, 600, 1.5, 0.08, '#1F5F99', tag='span', transform='uppercase'),
         heading('We kindly ask you to provide the Cooperative with your mobile phone number so that we can send you notifications in exceptional situations when necessary (no other messages will be sent).',
-                'clamp(22px,2.6vw,30px)', 600, 1.35, -0.01, '#0B2E4F'),
+                'clamp(22px,2.6vw,30px)', 600, 1.35, -0.01, '#0B2E4F', cls='pv-pretty'),
         text('<p>We also request your email address, if you have one.</p>', 16, 1.7, '#3A4854'),
         con(heading('Data Protection', 15, 600, 1.5, col='#0B2E4F', tag='span'),
             text(f'<p>For matters relating to data protection, you can contact us at: <a href="{MAIL}" style="font-weight:600">pyhtaanvok(at)gmail.com</a></p>', 16, 1.7, '#3A4854'),
@@ -380,7 +380,7 @@ def footer():
     main = con(con(left, right, d='row', wrap=True, gap_=(40, 'clamp(32px,5vw,72px)'), align='flex-start'),
                boxed=1136, pad=('clamp(16px,2vw,24px)', 32, 'clamp(40px,5vw,64px)', 32))
     copyright_ = widget('copyright', {'shortcode': 'Copyright © [hfe_current_year] · Pyhtään vesiosuuskunta',
-                                      'align': 'left', '_css_classes': 'pv-copyright',
+                                      'align': 'left', '_css_classes': 'pv-copyright', '_element_width': 'auto',
                                       'text_color': '#A9D1EA', **typo('caption_typography', 14, 400, 1.5)})
     login = button('Log in', 'https://pyhtaanvok.fi-c.seravo.com/wp-admin/', size=14, weight=400, ls=0, transform='none',
                    fg='#A9D1EA', hfg='#FFFFFF', hbg='#123C63', pad=(8, 14), radius=999)
@@ -401,13 +401,24 @@ def footer():
     return [root]
 
 
+def auto_widths(elements, parent_row=False):
+    """Nested containers default to 100% width; inside a row they must size to their content."""
+    for e in elements:
+        if e['elType'] == 'container':
+            st = e['settings']
+            if parent_row and 'width' not in st and st.get('position') != 'absolute':
+                st['width'] = unit('auto')
+            auto_widths(e['elements'], st.get('flex_direction') == 'row')
+    return elements
+
+
 def main():
     data = json.load(open(sys.argv[1]))
     el.MEDIA.update({k: tuple(v) for k, v in data['media'].items() if isinstance(v, list)})
     PAGES.update({k: v[1] for k, v in data['pages'].items()})
     os.makedirs(OUT, exist_ok=True)
     for name, fn in (('home', home), ('header', header), ('footer', footer)):
-        json.dump(fn(), open(os.path.join(OUT, f'{name}.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
+        json.dump(auto_widths(fn()), open(os.path.join(OUT, f'{name}.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
         print(name, os.path.getsize(os.path.join(OUT, f'{name}.json')))
 
 
