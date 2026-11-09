@@ -128,7 +128,7 @@ p,li{text-wrap:pretty}
 .pv-nowrap .elementor-heading-title{white-space:nowrap}
 
 /* Fallback styling for the UAE navigation-menu and copyright widgets (Elementor controls override these) */
-.pv-drawer .hfe-nav-menu a.hfe-menu-item{font-family:Poppins,sans-serif;font-size:clamp(18px,2.2vw,21px);font-weight:500;line-height:1.5;color:#fff;padding:15px 4px}
+.pv-drawer .hfe-nav-menu a.hfe-menu-item{font-family:Poppins,sans-serif;font-size:clamp(15px,2.05vh,21px);font-weight:500;line-height:1.5;color:#fff;padding:15px 4px}
 .pv-drawer .hfe-nav-menu a.hfe-menu-item:hover,.pv-drawer .hfe-nav-menu a.hfe-menu-item:focus{color:#F2B53A}
 .pv-footer-nav .hfe-nav-menu a.hfe-menu-item{font-family:Poppins,sans-serif;font-size:16px;font-weight:500;line-height:1.5;color:#fff;padding:13px 0}
 .pv-footer-nav .hfe-nav-menu a.hfe-menu-item:hover,.pv-footer-nav .hfe-nav-menu a.hfe-menu-item:focus{color:#F2B53A}
@@ -153,3 +153,9 @@ p,li{text-wrap:pretty}
 
 /* Menu items with the class "pv-hide-on-home" (Appearance → Menus → CSS Classes) are hidden on the front page only */
 body.home .hfe-nav-menu li.pv-hide-on-home{display:none!important}
+
+/* Drawer fits the window height: item spacing scales with height (15px on tall screens),
+   decorative lines step aside below ~1020px tall and card descriptions below ~860px. */
+.pv-drawer ul.hfe-nav-menu li a.hfe-menu-item{padding-top:clamp(4px,1.45vh,15px)!important;padding-bottom:clamp(4px,1.45vh,15px)!important}
+@media (max-height:1019px){.pv-drawer .pv-drawer-lines{display:none!important}}
+@media (max-height:859px){.pv-drawer .pv-drawer-desc{display:none!important}}

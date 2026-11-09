@@ -321,27 +321,28 @@ def header():
         'menu': 'main-menu', 'layout': 'vertical', 'navmenu_align': 'left', 'dropdown': 'none', 'submenu_icon': 'arrow',
         'pointer': 'none', 'padding_horizontal_menu_item': unit(4), 'padding_vertical_menu_item': unit(15),
         'menu_space_between': unit(0), 'menu_row_space': unit(0),
-        **typo('menu_typography', 'clamp(18px,2.2vw,21px)', 500, 1.5),
+        **typo('menu_typography', 'clamp(15px,2.05vh,21px)', 500, 1.5),
         'color_menu_item': '#FFFFFF', 'color_menu_item_hover': '#F2B53A', 'color_menu_item_active': '#FFFFFF',
         '_css_classes': 'pv-drawer-nav'})
     def dcard(sub, name, num, href, bg, fg, subcol, hbg):
-        c = con(con(heading(sub, 13, 400, 1.5, col=subcol, tag='span'),
+        c = con(con(heading(sub, 13, 400, 1.5, col=subcol, tag='span', cls='pv-drawer-desc'),
                     heading(name, 15, 600, 1.5, col=fg, tag='span'), grow=1, width=0),
                 heading(num, 17, 600, 1.5, col=fg, tag='span', cls='pv-nowrap', width='auto'),
                 d='row', justify='space-between', align='center', gap_=12, link=href, bg=bg, radius=20,
-                pad=(14, 18), cls='pv-drawer-card')
+                pad=('clamp(8px,1.4vh,14px)', 18), cls='pv-drawer-card')
         c['settings'].update({'background_hover_background': 'classic', 'background_hover_color': hbg})
         return c
     contacts = con(dcard('Fault Reports, New Water Connections and Emergency Assistance', 'Property Manager: Matti Härkänen',
                          '041 329 8271', TEL_PM, '#F2B53A', '#14202B', '#14202B', '#FFFFFF'),
                    dcard('Billing, Change of Address and Other Enquiries/Notifications', 'Secretary: Mona Sissi',
                          '050 330 8896', TEL_SEC, 'rgba(255,255,255,.12)', '#FFFFFF', '#D6E8F4', 'rgba(255,255,255,.22)'),
-                   lines('yellow', 6, 200, 34, 'drawer', margin=(8, 0, 0, 0), opacity=.7),
+                   lines('yellow', 6, 200, 34, 'drawer', margin=(8, 0, 0, 0), opacity=.7, cls='pv-drawer-lines'),
                    gap_=10, margin=('auto', 0, 0, 0))
     drawer = con(con(dlogo, close, d='row', justify='space-between', align='center', gap_=12),
                  nav_menu, contacts,
-                 bg='#1F5F99', radius=(28, 0, 0, 28), pad=(20, 'clamp(20px,4vw,32px)', 28, 'clamp(20px,4vw,32px)'),
-                 gap_=28, cls='pv-drawer', tag='aside', extra=shadow(-20, 0, 60, 0, 'rgba(11,46,79,.35)'))
+                 bg='#1F5F99', radius=(28, 0, 0, 28),
+                 pad=('clamp(12px,2vh,20px)', 'clamp(20px,4vw,32px)', 'clamp(12px,2.8vh,28px)', 'clamp(20px,4vw,32px)'),
+                 gap_='clamp(8px,2.8vh,28px)', cls='pv-drawer', tag='aside', extra=shadow(-20, 0, 60, 0, 'rgba(11,46,79,.35)'))
     overlay = con(bg='rgba(11,46,79,.5)', cls='pv-overlay')
     root = con(pill_, overlay, drawer, pad=(14, 32, 0, 32), align='center', tag='div', isinner=False, cls='pv-header')
     return [root]
