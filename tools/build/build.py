@@ -203,7 +203,7 @@ def price_card(dark):
             width=220, grow=1, bg='#0B2E4F', radius=32, pad=(32, 28), gap_=14, overflow='hidden', cls='pv-fee-card',
             extra=shadow(0, 28, 56, -20, 'rgba(11,46,79,.6)')), **card_m)
     tag = pill('€5 additional fee', '#4A5966', '#E8F1F7', ls=0.06, cls='pv-fee-pill')
-    _m(tag, typography_font_size=sz(10), typography_letter_spacing={'unit': 'em', 'size': 0.03, 'sizes': []},
+    _m(tag, typography_font_size=sz(9), typography_letter_spacing={'unit': 'em', 'size': 0, 'sizes': []},
        _padding=dims(5, 9), _border_radius=dims(12))
     return _m(con(
         tag,
