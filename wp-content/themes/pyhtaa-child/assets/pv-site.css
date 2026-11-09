@@ -58,8 +58,8 @@ p,li{text-wrap:pretty}
 .pv-menu-toggle .elementor-button{transition:background .25s ease;cursor:pointer}
 .pv-menu-toggle .elementor-button-content-wrapper{gap:12px;align-items:center}
 .pv-burger{position:relative;width:34px;height:34px;border-radius:999px;background:#1F5F99;display:block;flex:none}
-.pv-burger i{position:absolute;left:10px;width:14px;height:2px;border-radius:2px;background:#fff;transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .2s ease}
-.pv-burger i:nth-child(1){top:12px}.pv-burger i:nth-child(2){top:16px}.pv-burger i:nth-child(3){top:20px}
+.pv-burger i{position:absolute;left:50%;margin-left:-7px;width:14px;height:2px;border-radius:2px;background:#fff;transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .2s ease}
+.pv-burger i:nth-child(1){top:calc(50% - 5px)}.pv-burger i:nth-child(2){top:calc(50% - 1px)}.pv-burger i:nth-child(3){top:calc(50% + 3px)}
 .pv-menu-open .pv-burger i:nth-child(1){transform:translateY(4px) rotate(45deg)}
 .pv-menu-open .pv-burger i:nth-child(2){opacity:0}
 .pv-menu-open .pv-burger i:nth-child(3){transform:translateY(-4px) rotate(-45deg)}
@@ -172,19 +172,23 @@ body.home .hfe-nav-menu li.pv-hide-on-home{display:none!important}
 .pv-icon-circle .elementor-widget-icon,.pv-icon-circle .elementor-icon-wrapper,.pv-icon-circle .elementor-icon{display:flex;align-items:center;justify-content:center;line-height:0;margin:0}
 .pv-icon-circle .elementor-icon svg{display:block}
 
-/* Header stays on one line. Phones: phone pill = ringing icon only, Menu = burger only
-   (labels stay in the markup for screen readers); phones under 400px get tighter header spacing. */
+/* Header stays on one line. Phones (< 768px): the phone pill shows its ringing icon only and Menu
+   shows the burger only (labels stay in the markup for screen readers). Every size below scales
+   with the screen width, from a 320px phone up to tablet width, so the pill always fits edge to edge. */
 .pv-header-pill .pv-logo{min-width:0}
 @media (max-width:767px){
-  .pv-phone-pill .elementor-button{padding:5px!important}
+  .elementor-element.pv-header{--padding-left:clamp(12px,4vw,32px)!important;--padding-right:clamp(12px,4vw,32px)!important;--padding-top:clamp(10px,3vw,14px)!important}
+  .pv-header-pill.elementor-element{--padding-top:clamp(8px,2.4vw,12px)!important;--padding-bottom:clamp(8px,2.4vw,12px)!important;--padding-left:clamp(12px,4.4vw,22px)!important;--padding-right:clamp(8px,2.4vw,12px)!important;--column-gap:clamp(8px,3vw,24px)!important;--gap:16px clamp(8px,3vw,24px)!important}
+  .pv-header-pill .pv-logo{--column-gap:clamp(6px,2.4vw,10px)!important;--gap:clamp(6px,2.4vw,10px)!important}
+  .pv-header-pill .pv-logo img{width:clamp(32px,10vw,42px)!important;height:auto!important;max-width:none}
+  .pv-header-pill .pv-logo .e-con .elementor-widget-heading:first-child .elementor-heading-title{font-size:clamp(15px,4.9vw,19px)!important}
+  .pv-header-pill .pv-logo .e-con .elementor-widget-heading:last-child .elementor-heading-title{font-size:clamp(11px,3.6vw,14px)!important}
+  .pv-header-pill nav.elementor-element{--column-gap:clamp(4px,1.6vw,8px)!important;--gap:clamp(4px,1.6vw,8px)!important}
+  .pv-phone-pill .elementor-button{padding:clamp(3px,1.2vw,5px)!important}
+  .pv-phone-pill .elementor-button-icon{width:clamp(32px,10vw,38px);height:clamp(32px,10vw,38px)}
+  .pv-phone-pill .elementor-button-icon svg{width:clamp(15px,4.6vw,18px);height:clamp(15px,4.6vw,18px)}
   .pv-phone-pill .elementor-button-content-wrapper,.pv-menu-toggle .elementor-button-content-wrapper{gap:0}
   .pv-phone-pill .elementor-button-text,.pv-menu-toggle .elementor-button-text{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  .pv-menu-toggle .elementor-button{padding:7px!important}
-}
-@media (max-width:399px){
-  .elementor-element.pv-header{--padding-left:16px!important;--padding-right:16px!important}
-  .pv-header-pill.elementor-element{--padding-left:14px!important;--padding-right:8px!important;--column-gap:8px!important;--gap:16px 8px!important}
-  .pv-header-pill nav.elementor-element{--column-gap:4px!important;--gap:4px 4px!important}
-  .pv-header-pill .pv-logo{--column-gap:8px!important;--gap:8px 8px!important}
-  .pv-header-pill .pv-logo .elementor-widget-heading:last-child .elementor-heading-title{font-size:13px!important}
+  .pv-menu-toggle .elementor-button{padding:clamp(4px,1.6vw,7px)!important;height:auto!important}
+  .pv-menu-toggle .pv-burger{width:clamp(30px,9.4vw,34px);height:clamp(30px,9.4vw,34px)}
 }
