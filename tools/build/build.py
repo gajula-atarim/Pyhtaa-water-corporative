@@ -13,6 +13,7 @@ import os
 import sys
 
 import el
+import mobile
 from el import (button, blob, con, edge, heading, icon, image, lines, photo, pill, text, widget, common,
                 shadow, dims, unit, color, typo, svg_icon)
 
@@ -432,7 +433,10 @@ def main():
     PAGES.update({k: v[1] for k, v in data['pages'].items()})
     os.makedirs(OUT, exist_ok=True)
     for name, fn in (('home', home), ('header', header), ('footer', footer)):
-        json.dump(auto_widths(fn()), open(os.path.join(OUT, f'{name}.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
+        els = auto_widths(fn())
+        if name in ('home', 'footer'):
+            els = mobile.tune(els, name)  # phone-size values (Elementor _mobile settings)
+        json.dump(els, open(os.path.join(OUT, f'{name}.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
         print(name, os.path.getsize(os.path.join(OUT, f'{name}.json')))
 
 
