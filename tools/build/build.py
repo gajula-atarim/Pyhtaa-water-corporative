@@ -448,7 +448,8 @@ def footer():
     right = con(nav, width=480, grow=2, tag='nav')
     _t(right, width=unit('66%'))
     main = con(con(left, right, d='row', wrap=True, gap_=(40, 'clamp(32px,5vw,72px)'), align='flex-start',
-                   extra={'flex_wrap_tablet': 'nowrap', 'flex_gap_tablet': gap(32)}),
+                   extra={'flex_wrap_tablet': 'nowrap', 'flex_gap_tablet': gap(32),
+                          'flex_gap_mobile': gap(40, 'clamp(32px,5vw,72px)')}),
                boxed=1136, pad=('clamp(16px,2vw,24px)', 32, 'clamp(40px,5vw,64px)', 32))
     copyright_ = widget('copyright', {'shortcode': 'Copyright © [hfe_current_year] · Pyhtään vesiosuuskunta',
                                       'align': 'left', '_css_classes': 'pv-copyright', '_element_width': 'auto',
