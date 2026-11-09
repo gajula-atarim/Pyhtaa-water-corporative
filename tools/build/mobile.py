@@ -48,7 +48,7 @@ def tune(elements, scope='home'):
             cls = st.get('css_classes', '')
             mh = _size_key(st.get('min_height'))
             if st.get('position') != 'absolute' and mh in VISUAL_HEIGHTS:
-                st['min_height_mobile'] = unit(VISUAL_HEIGHTS[mh])
+                st.setdefault('min_height_mobile', unit(VISUAL_HEIGHTS[mh]))
             if 'pv-quick' in cls.split():               # 2x2 quick links
                 st['width_mobile'] = unit('calc(50% - 8px)')
                 st['padding_mobile'] = dims(20, 8, 16, 8)
@@ -65,7 +65,7 @@ def tune(elements, scope='home'):
             if w == 'heading':
                 k = _size_key(st.get('typography_font_size'))
                 if k in HEADING_SIZES:
-                    st['typography_font_size_mobile'] = unit(HEADING_SIZES[k])
+                    st.setdefault('typography_font_size_mobile', unit(HEADING_SIZES[k]))
             elif w == 'text-editor':
                 k = _size_key(st.get('typography_font_size'))
                 if k in TEXT_SIZES:

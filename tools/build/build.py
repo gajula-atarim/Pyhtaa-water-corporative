@@ -15,7 +15,7 @@ import sys
 import el
 import mobile
 from el import (button, blob, con, edge, heading, icon, image, lines, photo, pill, text, widget, common,
-                shadow, dims, unit, color, typo, svg_icon)
+                shadow, dims, unit, color, typo, svg_icon, gap)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, '..', 'data')
@@ -38,23 +38,38 @@ COL2 = lambda basis, *kids, **kw: con(*kids, width=basis, grow=1, **kw)  # auto-
 
 # ============================================================== HOME
 def hero():
+    # Phones use layout "A": short photo collage first, then compact text and the two actions side by side.
+    # All phone values are Elementor _mobile settings (incl. mobile order), desktop/tablet are unchanged.
+    bid = heading('Business ID: Y 2605405-8', 14, 400, 1.5, col='#4A5966', tag='span')
+    h1 = heading('Pyhtää Water Cooperative', 'clamp(40px,5.6vw,68px)', 600, 1.05, -0.02, '#0B2E4F', tag='h1')
+    sub = heading('Home page of Pyhtää Water Cooperative', 19, 400, 1.5, col='#3A4854', tag='p', cls='pv-balance')
+    bid['settings']['typography_font_size_mobile'] = unit(12)
+    h1['settings']['typography_font_size_mobile'] = unit(34)
+    sub['settings']['typography_font_size_mobile'] = unit(15)
+    waves = lines('yellow', 5, 'min(100%,380px)', 44, 'hero', margin=(12, 0, 0, 0))
+    waves['settings'].update({'width_mobile': unit(180), 'min_height_mobile': unit(22), 'margin_mobile': dims(4, 0, 0, 0)})
     left = COL2(420,
-        heading('Business ID: Y 2605405-8', 14, 400, 1.5, col='#4A5966', tag='span'),
-        heading('Pyhtää Water Cooperative', 'clamp(40px,5.6vw,68px)', 600, 1.05, -0.02, '#0B2E4F', tag='h1'),
-        heading('Home page of Pyhtää Water Cooperative', 19, 400, 1.5, col='#3A4854', tag='p', cls='pv-balance'),
+        bid, h1, sub,
         con(button('Water quality results', url('Water quality results'), fg='#14202B', bg='#F2B53A', hfg='#FFFFFF', hbg='#0B2E4F', pad=(14, 26)),
             button('Price list', url('Price list'), fg='#0B2E4F', hfg='#0B2E4F', pad=(14, 8), cls='pv-link-btn'),
-            d='row', gap_=12, wrap=True),
-        lines('yellow', 5, 'min(100%,380px)', 44, 'hero', margin=(12, 0, 0, 0)),
-        gap_=22)
-    right = COL2(420,
-        blob('#5FA8D3', 12, 0, {'pos': {'right': '-6%', 'top': '-6%'}, 'w': '58%', 'h': '58%'}),
-        photo('hero-lake', 28, {'pos': {'right': 0, 'top': 0}, 'w': '78%', 'h': '64%'}),
-        photo('hero-tap', 24, {'pos': {'left': 0, 'bottom': 0}, 'w': '56%', 'h': '46%'}),
-        minh='clamp(380px,46vw,540px)')
-    return con(con(left, right, d='row', wrap=True, gap_=48, align='center'),
+            d='row', gap_=12, wrap=True, extra={'flex_gap_mobile': gap(6), 'flex_align_items_mobile': 'center'}),
+        waves,
+        gap_=22, extra={'flex_gap_mobile': gap(12)})
+    blob_ = blob('#5FA8D3', 12, 0, {'pos': {'right': '-6%', 'top': '-6%'}, 'w': '58%', 'h': '58%'})
+    blob_['settings'].update({'_offset_x_end_mobile': unit(-14), '_offset_y_mobile': unit(-8),
+                              'width_mobile': unit('40%'), 'min_height_mobile': unit('52%')})
+    lake = photo('hero-lake', 28, {'pos': {'right': 0, 'top': 0}, 'w': '78%', 'h': '64%'})
+    lake['settings'].update({'width_mobile': unit('82%'), 'min_height_mobile': unit('68%'),
+                             'border_radius_mobile': dims(22)})
+    tap = photo('hero-tap', 24, {'pos': {'left': 0, 'bottom': 0}, 'w': '56%', 'h': '46%'})
+    tap['settings'].update({'width_mobile': unit('48%'), 'min_height_mobile': unit('48%'),
+                            'border_radius_mobile': dims(18)})
+    right = COL2(420, blob_, lake, tap, minh='clamp(380px,46vw,540px)',
+                 extra={'min_height_mobile': unit(250), '_flex_order_mobile': 'start'})
+    return con(con(left, right, d='row', wrap=True, gap_=48, align='center',
+                   extra={'flex_gap_mobile': gap(20)}),
                boxed=1136, pad=('clamp(40px,6vw,80px)', 32, 'clamp(48px,6vw,80px)', 32), tag='section', isinner=False,
-               extra={'_element_id': 'hero'})
+               extra={'_element_id': 'hero', 'padding_mobile': dims(18, 32, 40, 32)})
 
 
 def statement():
