@@ -220,19 +220,23 @@ def price_card(dark):
             _m(heading('per e-lasku', 14, 400, 1.5, col='#D6E8F4', tag='span'), typography_font_size=sz(13)),
             width=220, grow=1, bg='#0B2E4F', radius=32, pad=(32, 28), gap_=14, overflow='hidden', cls='pv-fee-card',
             extra=shadow(0, 28, 56, -20, 'rgba(11,46,79,.6)')), **card_m)
-    tag = pill('5 €:n lisämaksu', '#4A5966', '#E8F1F7', ls=0.06, cls='pv-fee-pill')
+    # Option A (client feedback 26.11): soft mist-blue card with a faint envelope watermark
+    tag = pill('5 €:n lisämaksu', '#1F5F99', '#FFFFFF', ls=0.06, cls='pv-fee-pill')
     _m(tag, typography_font_size=sz(10.5), typography_letter_spacing={'unit': 'em', 'size': 0.04, 'sizes': []},
        _padding=dims(6, 10))
+    mark = icon('pv-icon-mail', 170, '#5FA8D3', cls='pv-watermark', abs_={'right': -26, 'bottom': -30}, z=0)
+    _m(mark, size=sz(140))
     return _m(con(
-        tag,
-        _m(heading('Paperilasku postitse', 16, 500, 1.5, col='#4A5966', tag='span', margin=(12, 0, 0, 0)),
+        mark, tag,
+        _m(heading('Paperilasku postitse', 16, 500, 1.5, col='#1F5F99', tag='span', margin=(12, 0, 0, 0)),
            typography_font_size=sz(15), typography_line_height={'unit': 'em', 'size': 1.4, 'sizes': []},
            _margin=dims(8, 0, 0, 0)),
-        _m(heading('5 €', 'clamp(56px,6vw,76px)', 600, 1, -0.03, '#4A5966', tag='span'), typography_font_size=sz(58)),
-        _m(heading('per paperilasku. Jos haluat laskut postitse, ota yhteyttä sihteeriin.', 14, 400, 1.5, col='#4A5966', tag='span'),
+        _m(heading('5 €', 'clamp(56px,6vw,76px)', 600, 1, -0.03, '#0B2E4F', tag='span'), typography_font_size=sz(58)),
+        _m(heading('per paperilasku. Jos haluat laskut postitse, ota yhteyttä sihteeriin.', 14, 400, 1.5, col='#3A4854',
+                   tag='span', cls='pv-above-mark'),
            typography_font_size=sz(13), typography_line_height={'unit': 'em', 'size': 1.5, 'sizes': []}),
-        width=220, grow=1, bg='#FFFFFF', radius=32, pad=(32, 28), gap_=14,
-        extra={'border_border': 'dashed', 'border_width': dims(2), 'border_color': '#C9D6E0'}), **card_m)
+        width=360, bg='#E8F1F7', radius=28, pad=(32, 30, 30, 30), gap_=14, overflow='hidden', cls='pv-paper-card'),
+        **card_m)
 
 
 def fact(title, body):
@@ -256,7 +260,7 @@ def billing():
     # Client feedback 26.11: the dark 2 EUR e-invoice card is removed ("tämä pois kokonaan").
     paper = price_card(False)
     paper['settings']['width_mobile'] = unit('100%')  # single card: full width on phones, no swipe track
-    right = COL2(440, paper, d='row', wrap=True, gap_=16, align='stretch', cls='pv-stagger')
+    right = COL2(440, paper, d='row', wrap=True, gap_=16, align='stretch', justify='center', cls='pv-stagger')
     row1 = con(left, right, d='row', wrap=True, gap_='clamp(32px,5vw,64px)', align='center', cls='pv-reveal')
     row2 = con(fact('12 tai 4 kertaa vuodessa', 'Laskutusväli pysyy ennallaan'),
                fact('Kahdesti vuodessa', 'Laskutus tapahtuu kahdesti vuodessa tai sovitun mukaisesti.'),
