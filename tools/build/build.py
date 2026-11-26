@@ -252,8 +252,8 @@ def billing():
         heading('Muistathan tilata e-laskun!', 'clamp(30px,3.8vw,44px)', 600, 1.12, -0.015, '#0B2E4F'),
         text('<p>Sähköpostitse lähetettävät laskut muodostetaan laskutusohjelmalla, joten tarkistathan myös roskapostikansion. Jos sinulla on kysyttävää laskuista, ota yhteyttä sihteeriin.</p>', 16, 1.7, '#3A4854'),
         text('<p>Ohjeet e-laskun tilaamiseen löytyvät edellisen laskun kääntöpuolelta.</p>', 16, 1.7, '#3A4854'),
-        con(button('Hinnasto', url('Price list'), size=14, pad=(14, 24), **SKY_BTN),
-            button('Ota yhteyttä sihteeriin', TEL_SEC, size=14, fg='#0B2E4F', hfg='#0B2E4F', pad=(14, 8), cls='pv-link-btn'),
+        # client feedback 26.11: "Hinnasto" button removed (these prices aren't on the price list)
+        con(button('Ota yhteyttä sihteeriin', TEL_SEC, size=14, fg='#0B2E4F', hfg='#0B2E4F', pad=(14, 8), cls='pv-link-btn'),
             d='row', wrap=True, gap_=12, margin=(4, 0, 0, 0)),
         lines('sky', 6, 'min(100%,300px)', 40, 'md', margin=(4, 0, 0, 0)),
         gap_=20)
