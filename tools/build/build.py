@@ -253,9 +253,10 @@ def billing():
             d='row', wrap=True, gap_=12, margin=(4, 0, 0, 0)),
         lines('sky', 6, 'min(100%,300px)', 40, 'md', margin=(4, 0, 0, 0)),
         gap_=20)
-    right = COL2(440, price_card(True), price_card(False), d='row', wrap=True, gap_=16, align='stretch',
-                 cls='pv-stagger pv-price-track',
-                 extra={'flex_gap_mobile': gap(12), 'flex_wrap_mobile': 'nowrap'})
+    # Client feedback 26.11: the dark 2 EUR e-invoice card is removed ("tämä pois kokonaan").
+    paper = price_card(False)
+    paper['settings']['width_mobile'] = unit('100%')  # single card: full width on phones, no swipe track
+    right = COL2(440, paper, d='row', wrap=True, gap_=16, align='stretch', cls='pv-stagger')
     row1 = con(left, right, d='row', wrap=True, gap_='clamp(32px,5vw,64px)', align='center', cls='pv-reveal')
     row2 = con(fact('12 tai 4 kertaa vuodessa', 'Laskutusväli pysyy ennallaan'),
                fact('Kahdesti vuodessa', 'Laskutus tapahtuu kahdesti vuodessa tai sovitun mukaisesti.'),
