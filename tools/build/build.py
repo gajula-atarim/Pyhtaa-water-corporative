@@ -94,7 +94,7 @@ def statement():
 
 
 QUICK = [('Vedenlaatutulokset', 'pv-icon-drop'), ('Hinnasto', 'pv-icon-euro'),
-         ('Mittarilukemat', 'pv-icon-meter'), ('Yhteystiedot', 'pv-icon-phone')]
+         ('Yhteystiedot', 'pv-icon-phone')]  # meter readings removed: all meters are remote-read
 
 
 def quick_card(title, ic):
@@ -271,7 +271,7 @@ def contact_details():
         photo('cabin-lake', 28, {'pos': {'left': '4%', 'top': 0}, 'w': '92%', 'h': '100%'}),
         minh='clamp(360px,40vw,500px)')
     copy = COL2(420,
-        heading('Mittarilukemat ja yhteystiedot', 13, 600, 1.5, 0.08, '#1F5F99', tag='span', transform='uppercase'),
+        heading('Yhteystiedot', 13, 600, 1.5, 0.08, '#1F5F99', tag='span', transform='uppercase'),
         heading('Pyydämme ilmoittamaan osuuskunnalle matkapuhelinnumerosi, jotta voimme tarvittaessa tiedottaa sinulle poikkeustilanteista (muita viestejä ei lähetetä).',
                 'clamp(22px,2.6vw,30px)', 600, 1.35, -0.01, '#0B2E4F', cls='pv-pretty'),
         text('<p>Pyydämme myös sähköpostiosoitettasi, jos sinulla on sellainen.</p>', 16, 1.7, '#3A4854'),
@@ -341,7 +341,7 @@ def contact():
 
 def home():
     el.set_seed('home')
-    return [hero(), statement(), notice_band(), meter_readings(), announcements(), billing(), contact_details(), contact()]
+    return [hero(), statement(), notice_band(), announcements(), billing(), contact_details(), contact()]
 
 
 # ============================================================== HEADER
@@ -358,10 +358,11 @@ def header():
                con(heading('Pyhtään', 19, 600, 1, -0.01, '#FFFFFF', tag='span', link=el.SITE + '/'),
                    heading('vesiosuuskunta', 14, 400, 1, col='#D6E8F4', tag='span', link=el.SITE + '/', margin=(3, 0, 0, 0))),
                d='row', gap_=10, align='center', cls='pv-logo', extra={'_flex_size': 'none'})
-    phone = button('041 329 8271', TEL_PM, size=15, ls=0, transform='none', fg='#14202B', bg='#F2B53A', hfg='#0B2E4F',
-                   hbg='#FFFFFF', pad=(5, 18, 5, 5), radius=999, icon=svg_icon('pv-icon-phone-solid'), cls='pv-phone-pill')
+    # Client feedback: no phone number in the header; email instead
+    phone = button('pyhtaanvok@gmail.com', MAIL, size=15, ls=0, transform='none', fg='#14202B', bg='#F2B53A', hfg='#0B2E4F',
+                   hbg='#FFFFFF', pad=(5, 18, 5, 5), radius=999, icon=svg_icon('pv-icon-mail'), cls='pv-phone-pill pv-mail-pill')
     phone['settings']['button_css_id'] = ''
-    phone['settings']['link']['custom_attributes'] = 'aria-label|Vikailmoitukset: soita 041 329 8271'
+    phone['settings']['link']['custom_attributes'] = 'aria-label|Sähköposti: pyhtaanvok@gmail.com'
     menu_btn = button('Valikko', '#menu', size=15, ls=0, transform='none', fg='#0B2E4F', bg='#FFFFFF', hfg='#0B2E4F',
                       hbg='#E8F1F7', pad=(7, 8, 7, 20), radius=999, cls='pv-menu-toggle')
     nav = con(phone, menu_btn, d='row', gap_=8, align='center', tag='nav', extra={'_flex_size': 'none'})

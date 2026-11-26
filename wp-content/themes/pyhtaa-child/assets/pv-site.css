@@ -226,3 +226,7 @@ div.elementor-heading-title,span.elementor-heading-title,p.elementor-heading-tit
   .pv-footer-nav ul.hfe-nav-menu{grid-template-columns:1fr 1fr!important;column-gap:24px!important}
   .pv-footer-nav .hfe-nav-menu a.hfe-menu-item{font-size:15px!important}
 }
+/* Header email pill: no ringing animation, line icon */
+.pv-mail-pill .elementor-button-icon svg{animation:none!important;fill:none}
+/* Three quick links: centre the row on phones (2 + 1) */
+@media (max-width:767px){.pv-quick-group{justify-content:center}}
