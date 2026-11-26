@@ -234,5 +234,5 @@ div.elementor-heading-title,span.elementor-heading-title,p.elementor-heading-tit
 .pv-paper-card .pv-watermark{opacity:.22;pointer-events:none}
 .pv-paper-card .pv-watermark .elementor-icon{line-height:0}
 .pv-paper-card>.elementor-widget:not(.pv-watermark){position:relative;z-index:1}
-.pv-paper-card .pv-above-mark .elementor-heading-title{max-width:240px}
+.pv-paper-card .pv-above-mark .elementor-heading-title{max-width:220px}
 @media (max-width:767px){.pv-paper-card .pv-above-mark .elementor-heading-title{max-width:none;padding-right:70px}}

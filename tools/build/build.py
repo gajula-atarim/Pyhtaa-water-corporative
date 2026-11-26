@@ -224,7 +224,7 @@ def price_card(dark):
     tag = pill('5 €:n lisämaksu', '#1F5F99', '#FFFFFF', ls=0.06, cls='pv-fee-pill')
     _m(tag, typography_font_size=sz(10.5), typography_letter_spacing={'unit': 'em', 'size': 0.04, 'sizes': []},
        _padding=dims(6, 10))
-    mark = icon('pv-icon-mail', 170, '#5FA8D3', cls='pv-watermark', abs_={'right': -26, 'bottom': -30}, z=0)
+    mark = icon('pv-icon-mail', 140, '#5FA8D3', cls='pv-watermark', abs_={'right': -30, 'bottom': -36}, z=0)
     _m(mark, size=sz(140))
     return _m(con(
         mark, tag,
@@ -235,7 +235,7 @@ def price_card(dark):
         _m(heading('per paperilasku. Jos haluat laskut postitse, ota yhteyttä sihteeriin.', 14, 400, 1.5, col='#3A4854',
                    tag='span', cls='pv-above-mark'),
            typography_font_size=sz(13), typography_line_height={'unit': 'em', 'size': 1.5, 'sizes': []}),
-        width=360, bg='#E8F1F7', radius=28, pad=(32, 30, 30, 30), gap_=14, overflow='hidden', cls='pv-paper-card'),
+        width=380, bg='#E8F1F7', radius=28, pad=(32, 30, 30, 30), gap_=14, overflow='hidden', cls='pv-paper-card'),
         **card_m)
 
 
