@@ -277,7 +277,7 @@ def contact_details():
         minh='clamp(360px,40vw,500px)')
     copy = COL2(420,
         heading('Yhteystiedot', 13, 600, 1.5, 0.08, '#1F5F99', tag='span', transform='uppercase'),
-        heading('Pyydämme ilmoittamaan osuuskunnalle matkapuhelinnumerosi, jotta voimme tarvittaessa tiedottaa sinulle poikkeustilanteista (muita viestejä ei lähetetä).',
+        heading('Pyydämme ilmoittamaan osuuskunnalle matkapuhelinnumerosi, jotta voimme tarvittaessa tiedottaa sinulle poikkeustilanteista ja tärkeistä tiedotteista.',
                 'clamp(22px,2.6vw,30px)', 600, 1.35, -0.01, '#0B2E4F', cls='pv-pretty'),
         text('<p>Pyydämme myös sähköpostiosoitettasi, jos sinulla on sellainen.</p>', 16, 1.7, '#3A4854'),
         con(heading('Tietosuoja', 15, 600, 1.5, col='#0B2E4F', tag='span'),
