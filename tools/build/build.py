@@ -172,8 +172,10 @@ def announcements():
         article('Tietoa uudesta kiinteistönhoitajasta',
                 f'<p>Vesiosuuskunnalle on nimitetty uusi kiinteistönhoitaja: Matti Härkänen, puh. <a href="{TEL_PM}" style="color:#ffffff;font-weight:600">041 329 8271</a>.</p>'),
         gap_=32)
-    badge = con(heading('2 €', 30, 600, 1, col='#0B2E4F', tag='span', align='center'),
-                heading('per e-lasku', 12, 500, 1.3, col='#0B2E4F', tag='span', align='center', margin=(4, 0, 0, 0)),
+    # client feedback 26.11: badge shows the paper-invoice fee instead of the e-invoice price
+    badge = con(heading('5 €', 30, 600, 1, col='#0B2E4F', tag='span', align='center'),
+                _m(heading('per paperilasku', 12, 500, 1.3, col='#0B2E4F', tag='span', align='center', margin=(4, 0, 0, 0)),
+                   typography_font_size=unit(10.5)),
                 abs_={'right': 0, 'bottom': -24}, width=132, minh=132, bg='#5FA8D3', radius=999, justify='center',
                 align='center', z=2,
                 extra={'border_border': 'solid', 'border_width': dims(4), 'border_color': '#FFFFFF',
