@@ -115,6 +115,110 @@
   "cabin-lake": [
    35,
    "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-cabin-lake.jpg"
+  ],
+  "pv-icon-house": [
+   208,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-icon-house.svg"
+  ],
+  "pv-icon-pen": [
+   209,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-icon-pen.svg"
+  ],
+  "pv-icon-pipe": [
+   210,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-icon-pipe.svg"
+  ],
+  "pv-icon-check": [
+   211,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-icon-check.svg"
+  ],
+  "pv-icon-doc": [
+   212,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-icon-doc.svg"
+  ],
+  "pv-icon-factory": [
+   213,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-icon-factory.svg"
+  ],
+  "pv-icon-tower": [
+   214,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-icon-tower.svg"
+  ],
+  "pv-icon-network": [
+   215,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-icon-network.svg"
+  ],
+  "pv-icon-alert": [
+   216,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-icon-alert.svg"
+  ],
+  "pv-icon-arrow-ur": [
+   217,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-icon-arrow-ur.svg"
+  ],
+  "pv-icon-download": [
+   218,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-icon-download.svg"
+  ],
+  "pv-icon-mail2": [
+   219,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-icon-mail2.svg"
+  ],
+  "pl-hero": [
+   220,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-pl-hero.jpg"
+  ],
+  "pl-pvok": [
+   221,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-pl-pvok.jpg"
+  ],
+  "pl-shareholder": [
+   222,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-pl-shareholder.jpg"
+  ],
+  "ct-hero": [
+   223,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-ct-hero.jpg"
+  ],
+  "pm-hero": [
+   224,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-pm-hero.jpg"
+  ],
+  "pm-wash": [
+   225,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-pm-wash.jpg"
+  ],
+  "wi-hero": [
+   226,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-wi-hero.jpg"
+  ],
+  "wi-reduce": [
+   227,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-wi-reduce.jpg"
+  ],
+  "sh-hero": [
+   228,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-sh-hero.jpg"
+  ],
+  "sh-meetings": [
+   229,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-sh-meetings.jpg"
+  ],
+  "sh-agreements": [
+   230,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-sh-agreements.jpg"
+  ],
+  "sh-reports": [
+   231,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-sh-reports.jpg"
+  ],
+  "wq-hero": [
+   232,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-wq-hero.jpg"
+  ],
+  "pm-nature": [
+   233,
+   "https://pyhtaanvok.fi-c.seravo.com/wp-content/uploads/2026/11/pv-pm-nature.jpg"
   ]
  },
  "pages": {
@@ -124,35 +228,35 @@
   ],
   "Water quality results": [
    37,
-   "https://pyhtaanvok.fi-c.seravo.com/water-quality-results/"
+   "https://pyhtaanvok.fi-c.seravo.com/vedenlaatutulokset/"
   ],
   "Price list": [
    38,
-   "https://pyhtaanvok.fi-c.seravo.com/price-list/"
+   "https://pyhtaanvok.fi-c.seravo.com/hinnasto/"
   ],
   "Meter readings": [
    39,
-   "https://pyhtaanvok.fi-c.seravo.com/meter-readings/"
+   "https://pyhtaanvok.fi-c.seravo.com/mittarilukemat/"
   ],
   "General water information": [
    40,
-   "https://pyhtaanvok.fi-c.seravo.com/general-water-information/"
+   "https://pyhtaanvok.fi-c.seravo.com/yleista-tietoa-vedesta/"
   ],
   "Members": [
    41,
-   "https://pyhtaanvok.fi-c.seravo.com/members/"
+   "https://pyhtaanvok.fi-c.seravo.com/osakkaat/"
   ],
   "Board pages": [
    42,
-   "https://pyhtaanvok.fi-c.seravo.com/board-pages/"
+   "https://pyhtaanvok.fi-c.seravo.com/hallitus/"
   ],
   "Contact": [
    43,
-   "https://pyhtaanvok.fi-c.seravo.com/contact/"
+   "https://pyhtaanvok.fi-c.seravo.com/yhteystiedot/"
   ],
   "Pumping station maintenance": [
    44,
-   "https://pyhtaanvok.fi-c.seravo.com/pumping-station-maintenance/"
+   "https://pyhtaanvok.fi-c.seravo.com/pumppaamon-huolto/"
   ]
  }
 }

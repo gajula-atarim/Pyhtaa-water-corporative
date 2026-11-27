@@ -106,6 +106,44 @@
     if (!reduce) setInterval(function () { if (phone.matches && visible && !paused && !doc.hidden) go(current + 1); }, 3000);
   });
 
+  /* ---- Water quality results: year filter + address search ---- */
+  var wqYears = $$('.pv-wq-year');
+  if (wqYears.length) {
+    var filters = $$('.pv-wq-filter');
+    var box = doc.querySelector('.pv-wq-search'), input = null, empty = null, year = 'all';
+    if (box) {
+      input = doc.createElement('input');
+      input.type = 'search'; input.placeholder = 'Hae osoitteella'; input.setAttribute('aria-label', 'Hae osoitteella');
+      (box.querySelector(':scope > .e-con-inner') || box).appendChild(input);
+      empty = doc.createElement('p'); empty.className = 'pv-wq-empty pv-wq-hidden'; empty.textContent = 'Ei tuloksia haulla.';
+      wqYears[wqYears.length - 1].parentNode.appendChild(empty);
+    }
+    var applyWq = function () {
+      var q = input ? input.value.trim().toLowerCase() : '', shown = 0;
+      wqYears.forEach(function (row) {
+        var y = (row.id || '').replace('vuosi-', ''), rowShown = 0;
+        $$('.pv-wq-item', row).forEach(function (it) {
+          var hit = !q || it.textContent.toLowerCase().indexOf(q) > -1;
+          it.classList.toggle('pv-wq-hidden', !hit); if (hit) rowShown++;
+        });
+        var sum = row.querySelector('.pv-wq-summary'); if (sum) sum.classList.toggle('pv-wq-hidden', !!q);
+        var vis = (year === 'all' || year === y) && rowShown > 0;
+        row.classList.toggle('pv-wq-hidden', !vis); if (vis) shown += rowShown;
+      });
+      if (empty) empty.classList.toggle('pv-wq-hidden', shown > 0);
+    };
+    filters.forEach(function (f) {
+      var a = f.querySelector('a'); if (!a) return;
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        var h = a.getAttribute('href') || ''; year = h.indexOf('#vuosi-') === 0 ? h.slice(7) : 'all';
+        filters.forEach(function (g) { g.classList.toggle('is-active', g === f); });
+        applyWq();
+      });
+    });
+    if (input) input.addEventListener('input', applyWq);
+  }
+
   if (reduce || !('IntersectionObserver' in window)) return;
 
   /* ---- Stagger groups: children rise in one after another ---- */
