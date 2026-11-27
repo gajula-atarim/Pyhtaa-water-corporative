@@ -262,8 +262,9 @@ def billing():
     paper['settings']['width_mobile'] = unit('100%')  # single card: full width on phones, no swipe track
     right = COL2(440, paper, d='row', wrap=True, gap_=16, align='stretch', justify='center', cls='pv-stagger')
     row1 = con(left, right, d='row', wrap=True, gap_='clamp(32px,5vw,64px)', align='center', cls='pv-reveal')
-    row2 = con(fact('12 tai 4 kertaa vuodessa', '2 € per e-lasku tai 5 € per paperilasku'),  # client feedback 26.11
-               fact('Kahdesti vuodessa', 'Laskutus tapahtuu kahdesti vuodessa tai sovitun mukaisesti.'),
+    # client feedback 26.11: "Kahdesti vuodessa" first, "12 tai 4 kertaa vuodessa" (with prices) in the middle
+    row2 = con(fact('Kahdesti vuodessa', 'Laskutus tapahtuu kahdesti vuodessa tai sovitun mukaisesti.'),
+               fact('12 tai 4 kertaa vuodessa', '2 € per e-lasku tai 5 € per paperilasku'),
                fact('Todelliset lukemat', 'Etäluettavien mittareiden asiakkaiden laskut perustuvat aina todellisiin mittarilukemiin.'),
                d='row', wrap=True, gap_=16, cls='pv-stagger')
     return con(row1, row2, boxed=1136, pad=('clamp(64px,8vw,112px)', 32), gap_='clamp(32px,4vw,48px)', tag='section',
