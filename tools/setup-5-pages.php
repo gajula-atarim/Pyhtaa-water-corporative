@@ -44,6 +44,12 @@ if (defined('PV_BOARD_PW') && get_post_field('post_password', $board) === '') {
 }
 $out['board_protected'] = get_post_field('post_password', $board) !== '';
 
+/* documents live in this site's Media Library: re-point links from the old site (see setup-8-relink.php) */
+if (get_option('pv_doc_map')) {
+	$rl = wp_remote_get(PV_SRC . 'tools/setup-8-relink.php', array('timeout' => 30));
+	if (wp_remote_retrieve_response_code($rl) === 200) { ob_start(); eval('?>' . wp_remote_retrieve_body($rl)); $out['relink'] = json_decode(ob_get_clean(), true); }
+}
+
 \Elementor\Plugin::$instance->files_manager->clear_cache();
 wp_cache_flush();
 echo wp_json_encode($out);

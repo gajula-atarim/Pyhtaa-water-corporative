@@ -77,6 +77,12 @@ foreach (array('header' => array('Site Header', 'type_header'), 'footer' => arra
 }
 update_option('pv_hf_map', $hf, false);
 
+
+/* documents live in this site's Media Library: re-point links from the old site (see setup-8-relink.php) */
+if (get_option('pv_doc_map')) {
+	$rl = wp_remote_get(PV_SRC . 'tools/setup-8-relink.php', array('timeout' => 30));
+	if (wp_remote_retrieve_response_code($rl) === 200) { ob_start(); eval('?>' . wp_remote_retrieve_body($rl)); $out['relink'] = json_decode(ob_get_clean(), true); }
+}
 /* 4. caches */
 \Elementor\Plugin::$instance->files_manager->clear_cache();
 $out['hfe_header'] = function_exists('get_hfe_header_id') ? get_hfe_header_id() : 'n/a';
