@@ -2,7 +2,7 @@
 /**
  * Setup step 9 – give four pages the same addresses (slugs) they have on the old site pyhtaanvok.fi,
  * so Google results, bookmarks and old links keep working after launch.
- * WordPress remembers the previous slug (_wp_old_slug), so the interim addresses also forward automatically.
+ * (The interim addresses used during the build were never public, so they need no redirect.)
  */
 if (!defined('PV_SRC')) exit('PV_SRC not defined');
 $admins = get_users(array('role' => 'administrator', 'number' => 1, 'fields' => 'ID'));
