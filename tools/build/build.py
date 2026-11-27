@@ -510,7 +510,7 @@ def main():
     PAGES.update({k: v[1] for k, v in data['pages'].items()})
     os.makedirs(OUT, exist_ok=True)
     for name, fn in (('home', home), ('header', header), ('footer', footer)):
-        els = auto_widths(fn())
+        els = el.doc_links_new_tab(auto_widths(fn()))
         if name in ('home', 'footer'):
             els = mobile.tune(els, name)  # phone-size values (Elementor _mobile settings)
         json.dump(els, open(os.path.join(OUT, f'{name}.json'), 'w'), ensure_ascii=False, separators=(',', ':'))

@@ -624,7 +624,7 @@ def main():
     wq = json.load(open(os.path.join(OUT, 'water-quality-en.json')))
     for slug, (_, fn) in PAGES_OUT.items():
         els = water_quality(wq) if slug == 'vedenlaatutulokset' else fn()
-        els = auto_widths(els)
+        els = el.doc_links_new_tab(auto_widths(els))
         path = os.path.join(OUT, f'page-{slug}.json')
         json.dump(els, open(path, 'w'), ensure_ascii=False, separators=(',', ':'))
         print(slug, os.path.getsize(path))

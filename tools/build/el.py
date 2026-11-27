@@ -3,6 +3,7 @@
 Every element produced here is a normal, editable Elementor container or widget.
 Colours reference the kit's global colours so they can be changed site-wide.
 """
+import re
 import hashlib
 import itertools
 
@@ -341,3 +342,24 @@ def lines(colname, dur, w, h, variant, margin=None, opacity=None, cls=''):
 def pill(text_, fg, bg, size=12, ls=0.08, pad=(6, 12), weight=600, cls=None):
     return heading(text_, size, weight, 1.5, ls, fg, tag='span', transform='uppercase',
                    bg=bg, radius=999, pad=pad, width='auto', align_self='flex-start', cls=cls)
+
+
+DOC_RE = re.compile(r'\.(pdf|docx?)(\?|#|$)', re.I)
+
+
+def doc_links_new_tab(node):
+    """Links to documents (PDF/DOC) open in a new tab: Elementor link controls get 'Open in new window',
+    inline <a> tags in text get target="_blank"."""
+    if isinstance(node, list):
+        for n in node:
+            doc_links_new_tab(n)
+    elif isinstance(node, dict):
+        if isinstance(node.get('url'), str) and DOC_RE.search(node['url']):
+            node['is_external'] = 'on'
+        for k, v in node.items():
+            if isinstance(v, str) and '<a ' in v:
+                node[k] = re.sub(r'<a (?![^>]*target=)([^>]*href="[^"]+\.(?:pdf|docx?)"[^>]*)>',
+                                 r'<a \1 target="_blank" rel="noopener">', v, flags=re.I)
+            else:
+                doc_links_new_tab(v)
+    return node
