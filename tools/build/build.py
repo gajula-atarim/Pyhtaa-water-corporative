@@ -24,9 +24,8 @@ PAGES = {}  # title -> url
 
 
 def url(title):
-    # Links to the site's own pages (addresses come from tools/data/site.json)
-    fi = {'Vedenlaatutulokset': 'Water quality results', 'Hinnasto': 'Price list', 'Yhteystiedot': 'Contact'}
-    return PAGES[fi.get(title, title)]
+    # Inner pages are placeholders for now: every link except Home points to '#'.
+    return PAGES[title] if title == 'Home' else '#'
 
 
 TEL_PM = 'tel:+358413298271'
