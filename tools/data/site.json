@@ -228,7 +228,7 @@
   ],
   "Water quality results": [
    37,
-   "https://pyhtaanvok.fi-c.seravo.com/vedenlaatutulokset/"
+   "https://pyhtaanvok.fi-c.seravo.com/toiminta/"
   ],
   "Price list": [
    38,
@@ -240,7 +240,7 @@
   ],
   "General water information": [
    40,
-   "https://pyhtaanvok.fi-c.seravo.com/yleista-tietoa-vedesta/"
+   "https://pyhtaanvok.fi-c.seravo.com/vesitietoa/"
   ],
   "Members": [
    41,
@@ -248,7 +248,7 @@
   ],
   "Board pages": [
    42,
-   "https://pyhtaanvok.fi-c.seravo.com/hallitus/"
+   "https://pyhtaanvok.fi-c.seravo.com/hallituksen-sivut/"
   ],
   "Contact": [
    43,
@@ -256,7 +256,7 @@
   ],
   "Pumping station maintenance": [
    44,
-   "https://pyhtaanvok.fi-c.seravo.com/pumppaamon-huolto/"
+   "https://pyhtaanvok.fi-c.seravo.com/pumppaamoiden-huolto-ohjeita/"
   ]
  }
 }
