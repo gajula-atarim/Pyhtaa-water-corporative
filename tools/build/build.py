@@ -346,7 +346,8 @@ def contact():
 
 def home():
     el.set_seed('home')
-    return [hero(), statement(), notice_band(), announcements(), billing(), contact_details(), contact()]
+    # Client feedback 26.11: contact cards + "Muut yhteystiedot" + email moved up, right after the announcement band
+    return [hero(), statement(), notice_band(), contact(), announcements(), billing(), contact_details()]
 
 
 # ============================================================== HEADER
