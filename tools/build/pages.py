@@ -156,8 +156,8 @@ def price_list():
         vis = photo_area(ph, 'clamp(280px,28vw,360px)', blob_col)
         row = con(*((copy, vis) if reverse else (vis, copy)), d='row', wrap=True, gap_='clamp(32px,5vw,64px)',
                   align='center')
-        if reverse:
-            row['settings']['flex_direction_mobile'] = 'column-reverse'
+        if reverse:  # photo first on phones (order, not column-reverse, keeps the column widths intact)
+            vis['settings']['_flex_order_mobile'] = 'start'
         return row
     who_pays = section(*sun_title('Kuka maksaa?'),
                        who('PVOK', BLUE, MIST, 'Laite hajoaa iän vuoksi tai on viallinen',
@@ -229,7 +229,7 @@ def contact_page():
                 width=240, grow=1, bg=BLUE, radius=24, pad=(26, 24), gap_=12, extra=CARD_SHADOW),
             white_card(eyebrow('Muut hallituksen jäsenet'), *member_rows, width=240, grow=1, gap_=10),
             d='row', wrap=True, gap_=16, align='stretch', cls='pv-stagger'),
-        con(blob(SUN, 14, -3, {'pos': {'right': '-6%', 'top': '-30%'}, 'w': '28%', 'h': '150%'}),
+        con(blob(SUN, 14, -3, {'pos': {'right': '-70px', 'top': '-90px'}, 'w': '190px', 'h': '190px'}),
             con(eyebrow('Tilintarkastaja', SUN), heading('Anni Laamanen', 'clamp(24px,2.6vw,34px)', 600, 1.2,
                                                            col='#FFFFFF', tag='span'),
                 heading('HT-tilintarkastaja', 17, 400, 1.5, col='#D6E8F4', tag='span'), gap_=6),
@@ -561,7 +561,7 @@ def water_quality(data):
     el.set_seed('page-vedenlaatu')
     years = [y['year'] for y in data]
     chips = con(*[chip(y, f'#vuosi-{y}') for y in years[:4]], d='row', wrap=True, gap_=8)
-    hero = page_hero('Vedenlaatutulokset', 'Vedenlaatutulokset', [chips], 'wq-hero')
+    hero = page_hero('Vedenlaatutulokset', 'Vedenlaatutulokset', [chips], 'wq-hero', title_size='clamp(30px,3.7vw,54px)')
 
     filt = button('Kaikki', '#tulokset', size=14, ls=0, transform='none', fg='#FFFFFF', bg=NAVY, hfg='#FFFFFF',
                   hbg=BLUE, pad=(8, 14), radius=999, cls='pv-wq-filter is-active')
