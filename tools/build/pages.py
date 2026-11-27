@@ -55,6 +55,11 @@ def arrow_circle(bg, col, size=34):
                align='center', cls='pv-icon-circle', extra={'_flex_size': 'none'})
 
 
+def phone_hidden(e):
+    e['settings']['hide_mobile'] = 'hidden-mobile'
+    return e
+
+
 def chip(label, href, fg=NAVY, bg='#FFFFFF', hbg=MIST):
     return button(label, href, size=13, ls=0, transform='none', fg=fg, bg=bg, hfg=NAVY, hbg=hbg, pad=(9, 16),
                   radius=999)
@@ -214,6 +219,12 @@ def contact_page():
     member_rows = [con(num_circle(''.join(w[0] for w in n.split()), MIST, BLUE, 30, 11),
                        heading(n, 16, 600, 1.4, col=NAVY, tag='span'), d='row', gap_=10, align='center')
                    for n in others]
+    # auditor card: the corner shape shows on desktop only, where the button keeps clear of it
+    auditor_blob = blob(SUN, 14, -3, {'pos': {'right': '-70px', 'top': '-90px'}, 'w': '190px', 'h': '190px'})
+    auditor_blob['settings'].update({'hide_tablet': 'hidden-tablet', 'hide_mobile': 'hidden-mobile'})
+    auditor_btn = button('Sähköinen Tilintarkastus Pyhtää Oy', '#', size=14, ls=0, transform='none', fg='#FFFFFF',
+                         bg='rgba(255,255,255,.12)', hfg='#FFFFFF', hbg='rgba(255,255,255,.2)', pad=(12, 18), radius=999)
+    auditor_btn['settings'].update({'_margin': dims(0, 110, 0, 0), '_margin_tablet': dims(0, 0, 0, 0)})
     board = section(
         con(heading('Hallitus', 'clamp(32px,4vw,56px)', 600, 1.1, -0.02, NAVY), lines('sky', 6, 160, 30, 'md'),
             d='row', justify='space-between', align='center', wrap=True, gap_=16),
@@ -229,12 +240,11 @@ def contact_page():
                 width=240, grow=1, bg=BLUE, radius=24, pad=(26, 24), gap_=12, extra=CARD_SHADOW),
             white_card(eyebrow('Muut hallituksen jäsenet'), *member_rows, width=240, grow=1, gap_=10),
             d='row', wrap=True, gap_=16, align='stretch', cls='pv-stagger'),
-        con(blob(SUN, 14, -3, {'pos': {'right': '-70px', 'top': '-90px'}, 'w': '190px', 'h': '190px'}),
+        con(auditor_blob,
             con(eyebrow('Tilintarkastaja', SUN), heading('Anni Laamanen', 'clamp(24px,2.6vw,34px)', 600, 1.2,
                                                            col='#FFFFFF', tag='span'),
                 heading('HT-tilintarkastaja', 17, 400, 1.5, col='#D6E8F4', tag='span'), gap_=6),
-            button('Sähköinen Tilintarkastus Pyhtää Oy', '#', size=14, ls=0, transform='none', fg='#FFFFFF',
-                   bg='rgba(255,255,255,.12)', hfg='#FFFFFF', hbg='rgba(255,255,255,.2)', pad=(12, 18), radius=999),
+            auditor_btn,
             d='row', wrap=True, justify='space-between', align='center', gap_=18, bg=NAVY, radius=28,
             pad=('clamp(24px,3vw,34px)', 'clamp(22px,3vw,30px)'), overflow='hidden',
             extra=shadow(0, 24, 48, -20, 'rgba(11,46,79,.55)')),
@@ -267,7 +277,8 @@ def pump_page():
              'kaikki on kunnossa!</p>', 15, 1.65, TXT), width='min(100%,460px)', gap_=10)
     badge = con(eyebrow('Vähintään', INK), heading('kerran vuodessa', 24, 600, 1.1, col=INK, tag='span'),
                 abs_={'left': '-4%', 'bottom': -28}, bg=SUN, radius=18, pad=(14, 18), gap_=2, z=3,
-                cls='pv-float-card', width='auto', extra=shadow(0, 16, 32, -14, 'rgba(11,46,79,.45)'))
+                cls='pv-float-card', width='auto', extra={**shadow(0, 16, 32, -14, 'rgba(11,46,79,.45)'),
+                                                          '_offset_x_tablet': unit(16)})
     hero = page_hero('Pumppaamon huolto', 'Pumppaamon huolto-ohjeet', [intro], 'pm-hero',
                      title_size='clamp(36px,4.4vw,60px)', overlay=[badge])
 
@@ -303,7 +314,8 @@ def pump_page():
                       heading('Viemäriin joutuneet jätteet päätyvät häiritsemään luontoa', 15, 600, 1.35,
                               col='#FFFFFF', tag='span'),
                       d='row', gap_=10, align='center', abs_={'right': '-4%', 'bottom': -20}, bg=INK, radius=16,
-                      pad=(12, 14), z=3, width='min(90%,280px)', cls='pv-float-card')
+                      pad=(12, 14), z=3, width='min(90%,280px)', cls='pv-float-card',
+                      extra={'_offset_x_end_tablet': unit(16)})
     nature = COL2(320, blob(SKY, 14, -4, {'pos': {'left': '-6%', 'bottom': '-6%'}, 'w': '60%', 'h': '60%'}),
                   photo('pm-nature', 28, {'pos': {'left': 0, 'top': 0}, 'w': '96%', 'h': '96%'}), nature_note,
                   minh='clamp(320px,32vw,440px)', extra={'min_height_mobile': unit(260)})
@@ -362,7 +374,7 @@ def water_info():
                          cls='pv-icon-circle', extra={'_flex_size': 'none'}),
                      pill(f'Vaihe {n + 1}', BLUE, MIST, size=11),
                      heading(t, 15, 600, 1.35, col=NAVY, tag='span', align='center'),
-                     width=170, grow=1, align='center', gap_=10)
+                     width=170, grow=1, align='center', gap_=10, extra={'width_tablet': unit(140)})
                  for n, (i, b, c, t) in enumerate(steps)],
                d='row', wrap=True, gap_=16, cls='pv-stagger pv-flow')
     for s_ in flow['elements']:
@@ -454,7 +466,7 @@ def shareholders():
                 con(heading(y, 20, 600, 1.2, col=NAVY, tag='span'),
                     heading(f'Pyhtään vesiosuuskunta – varsinaisen kokouksen pöytäkirja {int(d)}.{m}.{y}', 13, 400,
                             1.45, col=TXT, tag='span'), gap_=2, grow=1, width=0),
-                arrow_circle(MIST, BLUE),
+                phone_hidden(arrow_circle(MIST, BLUE)),
                 d='row', gap_=14, align='center', link=UP + f, bg='#FFFFFF', radius=18, pad=(16, 18),
                 cls='pv-link-card', extra=CARD_SHADOW)
             for d, m, y, f in meetings]
